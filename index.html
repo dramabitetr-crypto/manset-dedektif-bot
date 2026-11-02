@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manşet Arkası Dedektiflik</title>
+    <!-- Telegram Web App scripti -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: #1e293b;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            margin-top: 10px;
+        }
+        h2 { color: #f59e0b; text-align: center; margin-top: 0; }
+        .case-box {
+            background: #0f172a;
+            padding: 15px;
+            border-left: 4px solid #f59e0b;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .suspects {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        button {
+            background: #334155;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        button:hover { background: #475569; }
+        button.correct { background: #16a34a !important; }
+        button.wrong { background: #dc2626 !important; }
+        #result-message {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🕵️ VAKA #01: Antika Saat</h2>
+        <div class="case-box">
+            <b>Olay:</b> Sabah 10:00'da dükkanda altın saat çalındı. Kapıda zorlama yok, alarm hiç çalmadı!<br><br>
+            <b>İpucu:</b> Vitrindeki camda sadece temizlikçinin parmak izi var ama o her gün temizlik yapıyor. Hırsız kapıyı açmadan nasıl girdi?
+        </div>
+
+        <div class="suspects" id="suspects-list">
+            <button onclick="checkAnswer(false, this)">🕵️ 1. Kerem (Ortak)</button>
+            <button onclick="checkAnswer(true, this)">🧹 2. Canan (Temizlikçi)</button>
+            <button onclick="checkAnswer(false, this)">👦 3. Mert (Çırak)</button>
+        </div>
+
+        <div id="result-message"></div>
+    </div>
+
+    <script>
+        // Telegram Web App uygulamasını başlat
+        let tg = window.Telegram.WebApp;
+        tg.expand();
+
+        function checkAnswer(isCorrect, btnElement) {
+            // Tüm butonları devre dışı bırak
+            let buttons = document.querySelectorAll('.suspects button');
+            buttons.forEach(b => b.disabled = true);
+
+            let resultDiv = document.getElementById('result-message');
+
+            if (isCorrect) {
+                btnElement.classList.add('correct');
+                resultDiv.innerHTML = "🎉 TEBRİKLER DETEKTİF! Doğru bildin. Canan'ın detayı olayı çözdü!";
+                resultDiv.style.color = "#4ade80";
+                if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
+            } else {
+                btnElement.classList.add('wrong');
+                resultDiv.innerHTML = "❌ YANLIŞ TAHMİN! Katil bu değil, ipucunu tekrar incele.";
+                resultDiv.style.color = "#f87171";
+                if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
+            }
+        }
+    </script>
+</body>
+</html>
