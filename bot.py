@@ -2,28 +2,35 @@ import os
 import asyncio
 from telegram import Bot
 
-# Gizli kasadan (GitHub Secrets) token'ı alıyoruz
+# Gizli kasadan (GitHub Secrets) Token ve Chat ID'yi çekiyoruz
 TOKEN = os.environ.get("TELEGRAM_TOKEN")
+CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
 
 async def send_daily_case():
+    # Bot nesnesini token ile oluşturuyoruz
     bot = Bot(token=TOKEN)
     
-    # Günün vakası metni
+    # Göndereceğimiz gizemli vaka metni
     vaka_metni = (
-        "🕵️ **GÜNÜN VAKASI: Antika Saat Hırsızlığı**\n\n"
+        "🕵️ *MANŞET ARKASI: GÜNÜN VAKASI*\n\n"
+        "*Vaka #01: Antika Saat Hırsızlığı*\n"
         "Sabah 10:00'da dükkana gelindiğinde altın saat yerinde yoktu. "
-        "Kapıda zorlama yok, alarm çalmadı!\n\n"
-        "🔍 **Şüpheliler:**\n"
-        "1. Kerem (Ortak - Kısa süreliğine dışarı çıktı)\n"
-        "2. Canan (Temizlikçi - Dün hastaydım diyor ama anahtar çelişkisi var)\n"
-        "3. Mert (Çırak - Sabah uyuyakalmış)\n\n"
-        "Sence hırsız kim? Cevabını düşün!"
+        "Kapıda zorlama yok, alarm hiç çalmadı!\n\n"
+        "🔍 *Şüpheliler:*\n"
+        "1️⃣ *Kerem (Ortak):* 'Kısa süreliğine kahve almaya çıktım' diyor.\n"
+        "2️⃣ *Canan (Temizlikçi):* 'Dün hastaydım gelmedim' diyor ama anahtar çelişkisi var.\n"
+        "3️⃣ *Mert (Çırak):* 'Sabah uyuyakalmışım' diyor.\n\n"
+        "💡 *İpucu:* Vitrindeki camda sadece Canan'ın parmak izi var ama o her gün temizlik yapıyor. Hırsız kapıyı zorlamadan nasıl girdi?\n\n"
+        "Sence katil/hırsız kim? Tahminini düşün!"
     )
     
-    # Buraya kendi Telegram kullanıcı ID'ni veya test grubunun ID'sini yazabilirsin
-    # Örnek olarak kendi chat_id'ni buraya koyabilirsin
-    # Şimdilik yapıyı kuruyoruz:
-    print("Vaka metni hazır, Telegram'a gönderiliyor...")
+    # Telegram'a mesajı gönderiyoruz
+    await bot.send_message(
+        chat_id=CHAT_ID,
+        text=vaka_metni,
+        parse_mode="Markdown"
+    )
+    print("Vaka başarıyla Telegram'a gönderildi!")
 
 if __name__ == "__main__":
     asyncio.run(send_daily_case())
