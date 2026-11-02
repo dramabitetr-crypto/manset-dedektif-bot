@@ -13,39 +13,42 @@ async def send_daily_case():
 
     bot = Bot(token=TOKEN)
     
+    # Canlı ve dikkat çekici format
     vaka_metni = (
-        "🕵️ *MANŞET ARKASI: GÜNÜN VAKASI*\n\n"
-        "*Vaka #01: Antika Saat Hırsızlığı*\n"
-        "Sabah 10:00'da dükkana gelindiğinde altın saat yerinde yoktu. "
-        "Kapıda zorlama yok, alarm hiç çalmadı!\n\n"
-        "🔍 *Şüpheliler:*\n"
-        "1️⃣ *Kerem (Ortak)*\n"
-        "2️⃣ *Canan (Temizlikçi)*\n"
-        "3️⃣ *Mert (Çırak)*\n\n"
-        "💡 *Soru:* Hırsız sence kim? Aşağıdaki butonlardan tahminini seç!"
+        "🚨 <b>GÜNÜN KRİTİK VAKASI: #01</b> 🚨\n"
+        "━━━━━━━━━━━━━━━━━━━\n"
+        "🏛️ <b>Olay Yeri:</b> Beyoğlu Antikacısı\n"
+        "⏰ <b>Saat:</b> 10:00 (Sabah)\n\n"
+        "💎 <b>Olay Özeti:</b>\n"
+        "Vitrindeki paha biçilemez 19. yy altın cep saati yerinde yok! "
+        "En garibi ise <b>kapıda hiç zorlama yok ve alarm asla çalmadı!</b>\n\n"
+        "👥 <b>ŞÜPHELİLER:</b>\n"
+        "1️⃣ <b>Kerem</b> (Dükkanın Ortağı)\n"
+        "2️⃣ <b>Canan</b> (Temizlik Görevlisi)\n"
+        "3️⃣ <b>Mert</b> (Çırak)\n\n"
+        "🎯 <b>GÖREVİN:</b> Hırsız sence kim? Aşağıdaki butonlardan şüpheliyi seç ve dedektifliğini konuştur! 👇"
     )
     
-    # İnteraktif butonları (Inline Keyboard) oluşturuyoruz
-    # callback_data kısmı kullanıcı tıkladığında botun arkada anlayacağı koddur
+    # Canlı ve renkli görünen interaktif butonlar
     keyboard = [
         [
-            InlineKeyboardButton("1️⃣ Kerem", callback_data="yanlis_kerem"),
-            InlineKeyboardButton("2️⃣ Canan", callback_data="dogru_canan"),
+            InlineKeyboardButton("🕵️ 1. Kerem (Ortak)", callback_data="yanlis_kerem"),
+            InlineKeyboardButton("🧹 2. Canan (Temizlikçi)", callback_data="dogru_canan"),
         ],
         [
-            InlineKeyboardButton("3️⃣ Mert", callback_data="yanlis_mert"),
+            InlineKeyboardButton("👦 3. Mert (Çırak)", callback_data="yanlis_mert"),
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     
-    # Mesajı butonlarla birlikte gönderiyoruz
+    # HTML formatı kullanarak daha net ve canlı görünmesini sağlıyoruz
     await bot.send_message(
         chat_id=CHAT_ID,
         text=vaka_metni,
-        parse_mode="Markdown",
+        parse_mode="HTML",
         reply_markup=reply_markup
     )
-    print("Vaka ve interaktif butonlar Telegram'a gönderildi!")
+    print("Canlı vaka ve butonlar başarıyla gönderildi!")
 
 if __name__ == "__main__":
     asyncio.run(send_daily_case())
