@@ -23,16 +23,19 @@ print(f"İşlenen Vaka: {current_case['title']}")
 title_text = current_case['title']
 clean_content = current_case['content'].replace('<b>', '').replace('</b>', '').replace('<br>', '\n')
 
+# Vaka içeriğinde şüpheliler veya ekstra detaylar varsa onları da metne dahil edelim
+suspects_text = current_case.get('suspects', "🔍 Şüpheliler: Arşiv Sorumlusu, Gece Bekçisi, Araştırmacı")
+
 # Font yolları (Linux sunucu desteği)
 font_bold = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
 font_regular = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
 try:
-    title_font = ImageFont.truetype(font_bold, 50)
-    content_font = ImageFont.truetype(font_regular, 36)
-    hook_font = ImageFont.truetype(font_bold, 42)
-    timer_font = ImageFont.truetype(font_bold, 80)
-    footer_font = ImageFont.truetype(font_regular, 32)
+    title_font = ImageFont.truetype(font_bold, 48)
+    content_font = ImageFont.truetype(font_regular, 32)
+    hook_font = ImageFont.truetype(font_bold, 38)
+    timer_font = ImageFont.truetype(font_bold, 75)
+    footer_font = ImageFont.truetype(font_regular, 30)
 except:
     title_font = ImageFont.load_default()
     content_font = ImageFont.load_default()
@@ -40,56 +43,70 @@ except:
     timer_font = ImageFont.load_default()
     footer_font = ImageFont.load_default()
 
-# 3. 55 Saniyelik Video İçin Kareleri (Frames) Üretelim (25 fps * 55 sn = ~1375 kare)
-# Disk alanını verimli kullanmak için geçici klasör açıyoruz
+# 3. 55 Saniyelik Video İçin Kareleri (Frames) Üretelim (25 fps * 55 sn = 1375 kare)
 os.makedirs("frames", exist_ok=True)
 
 FPS = 25
 TOTAL_SECONDS = 55
 TOTAL_FRAMES = FPS * TOTAL_SECONDS
 
-print(f"{TOTAL_SECONDS} saniyelik dinamik video kareleri oluşturuluyor...")
+print(f"{TOTAL_SECONDS} saniyelik zenginleştirilmiş dedektif video kareleri oluşturuluyor...")
 
 for frame_idx in range(TOTAL_FRAMES):
-    # Arka plan: Koyu dedektif mavisi/grisi gradient hissi veren düz ton
-    img = Image.new('RGB', (1080, 1920), color='#070b14')
+    current_sec = frame_idx / FPS
+    
+    # Arka plan: Derin dedektif koyu tonu
+    img = Image.new('RGB', (1080, 1920), color='#050811')
     d = ImageDraw.Draw(img)
     
-    # Üst Kanca (Hook) - İzleyicinin dikkatini çeken soru
-    d.text((70, 150), "🚨 DİKKAT! BU VAKA ÇÖZÜLMEYİ BEKLİYOR", fill="#38bdf8", font=hook_font)
+    # Dekoratif Üst Çerçeve / Şerit
+    d.rectangle([(0, 0), (1080, 120)], fill="#0f172a")
+    d.text((50, 40), "🔎 MANŞET DEDEKTİF | GİZLİ DOSYA ARŞİVİ", fill="#38bdf8", font=hook_font)
     
-    # Başlık
-    d.text((70, 240), title_text, fill="#fbbf24", font=title_font)
-    
-    # Çizgi Ayırıcı
-    d.line([(70, 330), (1010, 330)], fill="#1e293b", width=4)
-    
-    # Vaka Metni (Okunabilir geniş alan)
-    d.text((70, 380), clean_content, fill="#f8fafc", font=content_font)
-    
-    # Geri Sayım Mantığı (Örn: 50. saniyeden 0'a doğru geriye sayan dinamik sayaç)
-    # 55 saniyelik videoda son 30 saniye sayaç aktif olsun
-    current_sec = frame_idx // FPS
-    remaining_time = max(0, 30 - current_sec) if current_sec >= 25 else 30
-    
-    # Sayaç Kutusu ve Metni (Altta dikkat çekici alan)
-    d.rounded_rectangle([(70, 1350), (1010, 1520)], radius=20, fill="#111827", outline="#ef4444", width=3)
-    d.text((110, 1380), f"⏳ SÜRE: {remaining_time:02d} SANİYE", fill="#ef4444", font=timer_font)
-    
-    # Çağrı (Call to Action) - Mini App Yönlendirmesi
-    d.text((70, 1600), "Cevabı buldun mu?\nTelegram Mini App üzerinden çözümü aç ve oyuna katıl! 👇\nt.me/manset_dedektif_bot/dedektif", fill="#38bdf8", font=footer_font)
-    
-    # Her kareyi sırayla kaydet (örn: frame_0001.png)
+    # --- AŞAMA 1: Giriş Kancası (İlk 8 saniye boyunca ekranda sesleniş) ---
+    if current_sec < 8:
+        d.rounded_rectangle([(50, 180), (1030, 450)], radius=15, fill="#1e1b4b", outline="#6366f1", width=3)
+        d.text((90, 220), "📢 DEDEKTİF, DİKKATİNİ BURAYA VER!", fill="#c7d2fe", font=hook_font)
+        intro_msg = "Sessiz bir mekanda kusursuz bir cinayet işlendi.\nDeliller ortada, fakat katil aramızda saklanıyor.\nDosyayı dikkatle incele ve katili bul!"
+        d.text((90, 290), intro_msg, fill="#e2e8f0", font=content_font)
+    else:
+        # --- AŞAMA 2: Vaka Detayları ve Şüpheliler Ekranı ---
+        # Başlık Kutusu
+        d.rounded_rectangle([(50, 160), (1030, 310)], radius=15, fill="#0f172a", outline="#fbbf24", width=2)
+        d.text((80, 190), title_text, fill="#fbbf24", font=title_font)
+        
+        # Olay Metni Alanı
+        d.rounded_rectangle([(50, 330), (1030, 950)], radius=15, fill="#0b1329", outline="#334155", width=2)
+        d.text((80, 370), "📜 OLAY ÖZETİ & İPUÇLARI:", fill="#38bdf8", font=hook_font)
+        d.text((80, 440), clean_content, fill="#f8fafc", font=content_font)
+        
+        # Şüpheliler Alanı (Bomboş görünmesin diye eklendi)
+        d.rounded_rectangle([(50, 980), (1030, 1220)], radius=15, fill="#111827", outline="#f43f5e", width=2)
+        d.text((80, 1015), suspects_text, fill="#fca5a5", font=content_font)
+
+    # --- AŞAMA 3: Geri Sayım Mantığı (Son 30 saniyede devreye girer) ---
+    # 55 saniyelik videonun son 30 saniyesi (yani 25. saniyeden sonra) sayaç başlar
+    if current_sec >= 25:
+        remaining_time = max(0, int(55 - current_sec))
+        d.rounded_rectangle([(50, 1330), (1030, 1530)], radius=20, fill="#18181b", outline="#ef4444", width=4)
+        d.text((90, 1365), f"⏳ KARAR İÇİN SON: {remaining_time:02d} SANİYE", fill="#ef4444", font=timer_font)
+    else:
+        d.rounded_rectangle([(50, 1330), (1030, 1530)], radius=20, fill="#18181b", outline="#38bdf8", width=2)
+        d.text((90, 1390), "🔍 İpuçlarını İncele ve Düşün...", fill="#38bdf8", font=title_font)
+
+    # --- AŞAMA 4: Alt Çağrı (Call to Action) ---
+    d.rounded_rectangle([(50, 1580), (1030, 1850)], radius=15, fill="#0c4a6e", outline="#38bdf8", width=2)
+    cta_text = "Katil kim? Çözümü görmek ve oyuna katılmak için\nTelegram Mini App'e tıkla! 👇\nt.me/manset_dedektif_bot/dedektif"
+    d.text((90, 1630), cta_text, fill="#e0f2fe", font=content_font)
+
+    # Her kareyi kaydet
     frame_name = os.path.join("frames", f"frame_{frame_idx:04d}.png")
     img.save(frame_name)
 
-print("Kareler tamamlandı, FFmpeg ile video ve ses birleştiriliyor...")
+print("Kareler tamamlandı, FFmpeg ile video oluşturuluyor...")
 
-# 4. FFmpeg ile Kareleri ve (varsa) Gerilim Müziğini Birleştir
+# 4. FFmpeg ile Kareleri Birleştir (İsteğe bağlı arka plan ses efekti veya temiz akış için hazır)
 video_path = "gunun_vakasi.mp4"
-
-# Gerilim atmosferi için telifsiz kısa bir ambient/gerilim ses efekti ekleyebiliriz
-# Veya şimdilik kusursiz akıcı 55 saniyelik sessiz/ritimli dikey video üretelim:
 ffmpeg_command = [
     "ffmpeg", "-y",
     "-framerate", str(FPS),
@@ -101,7 +118,7 @@ ffmpeg_command = [
 ]
 
 subprocess.run(ffmpeg_command, check=True)
-print("Dinamik dedektif videosu başarıyla üretildi!")
+print("Profesyonel dedektif videosu başarıyla üretildi!")
 
 # 5. Telegram Kanalına Videoyu Gönder
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
@@ -112,7 +129,7 @@ if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID:
     with open(video_path, 'rb') as video_file:
         payload = {
             'chat_id': TELEGRAM_CHAT_ID,
-            'caption': f"🎬 GÜNÜN DEDEKTİFİK VAKASI (Süre: 55sn)\n\n{title_text}\n\n🕵️ Oyuna katılmak ve çözmek için Mini App'e tıkla!"
+            'caption': f"🎬 YENİ VAKA DOSYASI: {title_text}\n\n🕵️ Katili bulabilecek misin? Mini App üzerinden hemen çöz!\nt.me/manset_dedektif_bot/dedektif"
         }
         files = {'video': video_file}
         response = requests.post(url, data=payload, files=files)
@@ -123,4 +140,4 @@ state["last_index"] = currentIndex + 1
 with open('state.json', 'w', encoding='utf-8') as f:
     json.dump(state, f, ensure_ascii=False, indent=4)
 
-print("İşlem tamamlandı!")
+print("İşlem başarıyla tamamlandı!")
