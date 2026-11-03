@@ -1,4 +1,4 @@
-name: Dedektif Vaka Üret ve Gönder
+name: Dedektif Botunu Çalıştır
 
 on:
   workflow_dispatch: # Sadece senin "Run workflow" butonuna basmanla çalışır
