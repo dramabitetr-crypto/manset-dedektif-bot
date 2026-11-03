@@ -1,0 +1,29 @@
+[
+  {
+    "title": "🕵️ VAKA #01: Antika Saat",
+    "content": "<b>Olay:</b> Sabah 10:00'da dükkanda altın saat çalındı. Kapıda zorlama yok, alarm hiç çalmadı!<br><br><b>İpucu:</b> Vitrindeki camda sadece temizlikçinin parmak izi var ama o her gün temizlik yapıyor. Hırsız kapıyı açmadan nasıl girdi?",
+    "suspects": [
+      { "text": "🕵️ 1. Kerem (Ortak)", "correct": false },
+      { "text": "🧹 2. Canan (Temizlikçi)", "correct": true },
+      { "text": "👦 3. Mert (Çırak)", "correct": false }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #02: Müze Soygunu",
+    "content": "<b>Olay:</b> Gece yarısı müzede paha biçilemez tablo çalındı. Güvenlik kamerası kayıtlarında sadece sabaha karşı patlayan bir elektrik trafosu arızası görünüyor.<br><br><b>İpucu:</b> Güvenlik görevlisi içeride kilitli kaldığını söylüyor ama kapı dışarıdan kilitlenmiş.",
+    "suspects": [
+      { "text": "🚨 1. Tarık (Gece Bekçisi)", "correct": true },
+      { "text": "🖼️ 2. Selim (Müze Müdürü)", "correct": false },
+      { "text": "🧹 3. Temizlik Ekibi", "correct": false }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #03: Gizli Kasa",
+    "content": "<b>Olay:</b> Ofisteki çelik kasadan para çalındı. Kasanın şifresini sadece patron biliyordu ve kimseyle paylaşmamıştı.<br><br><b>İpucu:</b> Patron tatildeydi ve kasada hiçbir zorlama izi yoktu.",
+    "suspects": [
+      { "text": "💻 1. Şirket Hacker'ı", "correct": false },
+      { "text": "🔑 2. Temizlikçi Kadın", "correct": false },
+      { "text": "📷 3. Kameradaki Yansıma (Şifreyi çözen)", "correct": true }
+    ]
+  }
+]
