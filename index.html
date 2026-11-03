@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manşet Arkası Dedektiflik</title>
-    <!-- Telegram Web App scripti -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         body {
@@ -79,15 +78,10 @@
 <body>
 
     <div class="container">
-        <h2 id="case-title">🕵️ VAKA #01: Antika Saat</h2>
-        <div class="case-box" id="case-text">
-            <b>Olay:</b> Sabah 10:00'da dükkanda altın saat çalındı. Kapıda zorlama yok, alarm hiç çalmadı!<br><br>
-            <b>İpucu:</b> Vitrindeki camda sadece temizlikçinin parmak izi var ama o her gün temizlik yapıyor. Hırsız kapıyı açmadan nasıl girdi?
-        </div>
+        <h2 id="case-title">🕵️ Yükleniyor...</h2>
+        <div class="case-box" id="case-text">Vakalar yükleniyor, lütfen bekleyin...</div>
 
-        <div class="suspects" id="suspects-list">
-            <!-- Dinamik yüklenecek şimşek butonlar buraya gelecek -->
-        </div>
+        <div class="suspects" id="suspects-list"></div>
 
         <div id="result-message"></div>
         
@@ -98,31 +92,23 @@
         let tg = window.Telegram.WebApp;
         tg.expand();
 
-        // Vakalar listesi
-        const cases = [
-            {
-                title: "🕵️ VAKA #01: Antika Saat",
-                content: "<b>Olay:</b> Sabah 10:00'da dükkanda altın saat çalındı. Kapıda zorlama yok, alarm hiç çalmadı!<br><br><b>İpucu:</b> Vitrindeki camda sadece temizlikçinin parmak izi var ama o her gün temizlik yapıyor. Hırsız kapıyı açmadan nasıl girdi?",
-                suspects: [
-                    { text: "🕵️ 1. Kerem (Ortak)", correct: false },
-                    { text: "🧹 2. Canan (Temizlikçi)", correct: true },
-                    { text: "👦 3. Mert (Çırak)", correct: false }
-                ]
-            },
-            {
-                title: "🕵️ VAKA #02: Müze Soygunu",
-                content: "<b>Olay:</b> Gece yarısı müzede paha biçilemez tablo çalındı. Güvenlik kamerası kayıtlarında sadece sabaha karşı patlayan bir elektrik trafosu arızası görünüyor.<br><br><b>İpucu:</b> Güvenlik görevlisi içeride kilitli kaldığını söylüyor ama kapı dışarıdan kilitlenmiş.",
-                suspects: [
-                    { text: "🚨 1. Tarık (Gece Bekçisi)", correct: true },
-                    { text: "🖼️ 2. Selim (Müze Müdürü)", correct: false },
-                    { text: "🧹 3. Temizlik Ekibi", correct: false }
-                ]
-            }
-        ];
-
+        let cases = [];
         let currentCaseIndex = 0;
 
+        // JSON dosyasından vakaları dışarıdan çek
+        fetch('vakalar.json')
+            .then(response => response.json())
+            .then(data => {
+                cases = data;
+                loadCase();
+            })
+            .catch(error => {
+                console.error('Vakalar yüklenirken hata oluştu:', error);
+                document.getElementById('case-text').innerText = "Vakalar yüklenirken bir hata oluştu!";
+            });
+
         function loadCase() {
+            if (cases.length === 0) return;
             let current = cases[currentCaseIndex];
             document.getElementById('case-title').innerHTML = current.title;
             document.getElementById('case-text').innerHTML = current.content;
@@ -168,14 +154,11 @@
             if (currentCaseIndex < cases.length) {
                 loadCase();
             } else {
-                // Tüm vakalar bittiyse baştan başlat veya kutlama yap
+                // Tüm vakalar bitince başa dön
                 currentCaseIndex = 0;
                 loadCase();
             }
         }
-
-        // Oyunu ilk açılışta yükle
-        loadCase();
     </script>
 </body>
 </html>
