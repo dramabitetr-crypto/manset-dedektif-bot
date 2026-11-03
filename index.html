@@ -54,6 +54,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            width: 100%;
         }
         button:hover { background: #475569; }
         button.correct { background: #16a34a !important; }
@@ -64,6 +65,15 @@
             font-weight: bold;
             font-size: 16px;
         }
+        .action-btn {
+            margin-top: 15px;
+            background: #f59e0b;
+            color: #0f172a;
+            font-weight: bold;
+            justify-content: center;
+            display: none;
+        }
+        .action-btn:hover { background: #d97706; }
     </style>
 </head>
 <body>
@@ -82,6 +92,9 @@
         </div>
 
         <div id="result-message"></div>
+        
+        <!-- Doğru/Yanlış sonrasında belirecek devam butonu -->
+        <button id="next-btn" class="action-btn" onclick="resetGame()">🔄 Vakayı Yeniden Çöz / Sonraki Vaka</button>
     </div>
 
     <script>
@@ -95,6 +108,7 @@
             buttons.forEach(b => b.disabled = true);
 
             let resultDiv = document.getElementById('result-message');
+            let nextBtn = document.getElementById('next-btn');
 
             if (isCorrect) {
                 btnElement.classList.add('correct');
@@ -107,6 +121,22 @@
                 resultDiv.style.color = "#f87171";
                 if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
             }
+
+            // Devam butonunu görünür yap
+            nextBtn.style.display = "block";
+        }
+
+        function resetGame() {
+            // Seçimleri ve stilleri sıfırla
+            let buttons = document.querySelectorAll('.suspects button');
+            buttons.forEach(b => {
+                b.disabled = false;
+                b.classList.remove('correct', 'wrong');
+            });
+
+            // Mesajı ve devam butonunu gizle
+            document.getElementById('result-message').innerHTML = "";
+            document.getElementById('next-btn').style.display = "none";
         }
     </script>
 </body>
