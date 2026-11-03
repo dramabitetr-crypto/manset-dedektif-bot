@@ -9,7 +9,7 @@ if os.path.exists('state.json'):
     with open('state.json', 'r', encoding='utf-8') as f:
         state = json.load(f)
 else:
-    state = {"last_index": 0}
+            state = {"last_index": 0}
 
 currentIndex = state.get("last_index", 0)
 
@@ -18,13 +18,22 @@ with open('vakalar.json', 'r', encoding='utf-8') as f:
     cases = json.load(f)
 
 current_case = cases[currentIndex % len(cases)]
-print(f"İşlenen Vaka: {current_case['title']}")
+print(f"İşlenen Vaka: {current_case.get('title', 'Bilinmeyen Vaka')}")
 
-title_text = current_case['title']
-clean_content = current_case['content'].replace('<b>', '').replace('</b>', '').replace('<br>', '\n')
+title_text = str(current_case.get('title', 'Dedektiflik Vakası'))
+raw_content = current_case.get('content', 'Detaylar gizlidir...')
 
-# Vaka içeriğinde şüpheliler veya ekstra detaylar varsa onları da metne dahil edelim
-suspects_text = current_case.get('suspects', "🔍 Şüpheliler: Arşiv Sorumlusu, Gece Bekçisi, Araştırmacı")
+# Metinlerin kesinlikle string (metin) olmasını sağlıyoruz (Hata önleyici)
+if isinstance(raw_content, list):
+    clean_content = "\n".join([str(item) for item in raw_content])
+else:
+    clean_content = str(raw_content).replace('<b>', '').replace('</b>', '').replace('<br>', '\n')
+
+raw_suspects = current_case.get('suspects', "🔍 Şüpheliler: Arşiv Sorumlusu, Gece Bekçisi, Araştırmacı")
+if isinstance(raw_suspects, list):
+    suspects_text = "🔍 Şüpheliler:\n" + "\n".join([f"- {s}" for s in raw_suspects])
+else:
+    suspects_text = str(raw_suspects)
 
 # Font yolları (Linux sunucu desteği)
 font_bold = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
@@ -80,12 +89,11 @@ for frame_idx in range(TOTAL_FRAMES):
         d.text((80, 370), "📜 OLAY ÖZETİ & İPUÇLARI:", fill="#38bdf8", font=hook_font)
         d.text((80, 440), clean_content, fill="#f8fafc", font=content_font)
         
-        # Şüpheliler Alanı (Bomboş görünmesin diye eklendi)
+        # Şüpheliler Alanı
         d.rounded_rectangle([(50, 980), (1030, 1220)], radius=15, fill="#111827", outline="#f43f5e", width=2)
         d.text((80, 1015), suspects_text, fill="#fca5a5", font=content_font)
 
     # --- AŞAMA 3: Geri Sayım Mantığı (Son 30 saniyede devreye girer) ---
-    # 55 saniyelik videonun son 30 saniyesi (yani 25. saniyeden sonra) sayaç başlar
     if current_sec >= 25:
         remaining_time = max(0, int(55 - current_sec))
         d.rounded_rectangle([(50, 1330), (1030, 1530)], radius=20, fill="#18181b", outline="#ef4444", width=4)
@@ -105,7 +113,7 @@ for frame_idx in range(TOTAL_FRAMES):
 
 print("Kareler tamamlandı, FFmpeg ile video oluşturuluyor...")
 
-# 4. FFmpeg ile Kareleri Birleştir (İsteğe bağlı arka plan ses efekti veya temiz akış için hazır)
+# 4. FFmpeg ile Kareleri Birleştir
 video_path = "gunun_vakasi.mp4"
 ffmpeg_command = [
     "ffmpeg", "-y",
