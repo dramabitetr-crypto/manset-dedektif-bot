@@ -7,8 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Kodları İndir
-        uses: actions/checkout@v4
+   - name: Kodları İndir
+     uses: actions/checkout@v4
+     with:
+       token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Python Kurulumu
         uses: actions/setup-python@v5
