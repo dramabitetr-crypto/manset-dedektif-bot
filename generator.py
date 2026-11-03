@@ -4,7 +4,7 @@ import subprocess
 import requests
 from PIL import Image, ImageDraw, ImageFont
 
-# 1. State (Kaldığımız yer) dosyasını oku
+# 1. State dosyasını oku
 if os.path.exists('state.json'):
     with open('state.json', 'r', encoding='utf-8') as f:
         state = json.load(f)
@@ -17,64 +17,91 @@ currentIndex = state.get("last_index", 0)
 with open('vakalar.json', 'r', encoding='utf-8') as f:
     cases = json.load(f)
 
-# Sıradaki vakayı seç (100 biterse baştan başla)
 current_case = cases[currentIndex % len(cases)]
 print(f"İşlenen Vaka: {current_case['title']}")
-
-# 3. Dikey Video için Arka Plan Görseli Oluştur (9:16 - 1080x1920)
-img = Image.new('RGB', (1080, 1920), color='#090d16')
-d = ImageDraw.Draw(img)
-
-# Türkçe karakterleri destekleyen sistem fontunu yükleyelim (Linux sunucularda bulunur)
-font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-font_regular = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
-
-try:
-    title_font = ImageFont.truetype(font_path, 55)
-    content_font = ImageFont.truetype(font_regular, 38)
-    alert_font = ImageFont.truetype(font_path, 50)
-    footer_font = ImageFont.truetype(font_regular, 36)
-except:
-    # Yedek olarak varsayılan fontu kullan
-    title_font = ImageFont.load_default()
-    content_font = ImageFont.load_default()
-    alert_font = ImageFont.load_default()
-    footer_font = ImageFont.load_default()
 
 title_text = current_case['title']
 clean_content = current_case['content'].replace('<b>', '').replace('</b>', '').replace('<br>', '\n')
 
-# Metinleri ve Başlığı Yerleştirme
-d.text((80, 200), "🚨 GİZLİ DOSYA / MANŞET DEDEKTİF", fill="#38bdf8", font=footer_font)
-d.text((80, 280), title_text, fill="#fbbf24", font=title_font)
+# Font yolları (Linux sunucu desteği)
+font_bold = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+font_regular = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 
-# İçeriği ekrana ortalama tarzında çizdirme
-d.text((80, 450), clean_content, fill="#f8fafc", font=content_font)
+try:
+    title_font = ImageFont.truetype(font_bold, 50)
+    content_font = ImageFont.truetype(font_regular, 36)
+    hook_font = ImageFont.truetype(font_bold, 42)
+    timer_font = ImageFont.truetype(font_bold, 80)
+    footer_font = ImageFont.truetype(font_regular, 32)
+except:
+    title_font = ImageFont.load_default()
+    content_font = ImageFont.load_default()
+    hook_font = ImageFont.load_default()
+    timer_font = ImageFont.load_default()
+    footer_font = ImageFont.load_default()
 
-# Dikkat çekici uyarı ve sayaç vurgusu
-d.text((80, 1250), "⏳ ÇÖZÜM İÇİN SON 20 SANİYE!", fill="#ef4444", font=alert_font)
-d.text((80, 1400), "Kimin işlediğini bulabilecek misin?\nCevap ve Oyunu Çözmek İçin:\nTelegram Mini App'e Tıkla! 👇\nt.me/manset_dedektif_bot/dedektif", fill="#38bdf8", font=footer_font)
+# 3. 55 Saniyelik Video İçin Kareleri (Frames) Üretelim (25 fps * 55 sn = ~1375 kare)
+# Disk alanını verimli kullanmak için geçici klasör açıyoruz
+os.makedirs("frames", exist_ok=True)
 
-# Geçici görsel olarak kaydet
-image_path = "temp_frame.png"
-img.save(image_path)
+FPS = 25
+TOTAL_SECONDS = 55
+TOTAL_FRAMES = FPS * TOTAL_SECONDS
 
-# 4. FFmpeg kullanarak görseli 15 saniyelik dikey MP4 videoya dönüştür (Okunabilir süre)
+print(f"{TOTAL_SECONDS} saniyelik dinamik video kareleri oluşturuluyor...")
+
+for frame_idx in range(TOTAL_FRAMES):
+    # Arka plan: Koyu dedektif mavisi/grisi gradient hissi veren düz ton
+    img = Image.new('RGB', (1080, 1920), color='#070b14')
+    d = ImageDraw.Draw(img)
+    
+    # Üst Kanca (Hook) - İzleyicinin dikkatini çeken soru
+    d.text((70, 150), "🚨 DİKKAT! BU VAKA ÇÖZÜLMEYİ BEKLİYOR", fill="#38bdf8", font=hook_font)
+    
+    # Başlık
+    d.text((70, 240), title_text, fill="#fbbf24", font=title_font)
+    
+    # Çizgi Ayırıcı
+    d.line([(70, 330), (1010, 330)], fill="#1e293b", width=4)
+    
+    # Vaka Metni (Okunabilir geniş alan)
+    d.text((70, 380), clean_content, fill="#f8fafc", font=content_font)
+    
+    # Geri Sayım Mantığı (Örn: 50. saniyeden 0'a doğru geriye sayan dinamik sayaç)
+    # 55 saniyelik videoda son 30 saniye sayaç aktif olsun
+    current_sec = frame_idx // FPS
+    remaining_time = max(0, 30 - current_sec) if current_sec >= 25 else 30
+    
+    # Sayaç Kutusu ve Metni (Altta dikkat çekici alan)
+    d.rounded_rectangle([(70, 1350), (1010, 1520)], radius=20, fill="#111827", outline="#ef4444", width=3)
+    d.text((110, 1380), f"⏳ SÜRE: {remaining_time:02d} SANİYE", fill="#ef4444", font=timer_font)
+    
+    # Çağrı (Call to Action) - Mini App Yönlendirmesi
+    d.text((70, 1600), "Cevabı buldun mu?\nTelegram Mini App üzerinden çözümü aç ve oyuna katıl! 👇\nt.me/manset_dedektif_bot/dedektif", fill="#38bdf8", font=footer_font)
+    
+    # Her kareyi sırayla kaydet (örn: frame_0001.png)
+    frame_name = os.path.join("frames", f"frame_{frame_idx:04d}.png")
+    img.save(frame_name)
+
+print("Kareler tamamlandı, FFmpeg ile video ve ses birleştiriliyor...")
+
+# 4. FFmpeg ile Kareleri ve (varsa) Gerilim Müziğini Birleştir
 video_path = "gunun_vakasi.mp4"
+
+# Gerilim atmosferi için telifsiz kısa bir ambient/gerilim ses efekti ekleyebiliriz
+# Veya şimdilik kusursiz akıcı 55 saniyelik sessiz/ritimli dikey video üretelim:
 ffmpeg_command = [
     "ffmpeg", "-y",
-    "-loop", "1",
-    "-i", image_path,
-    "-t", "15",
+    "-framerate", str(FPS),
+    "-i", "frames/frame_%04d.png",
     "-c:v", "libx264",
     "-pix_fmt", "yuv420p",
-    "-vf", "scale=1080:1920",
+    "-crf", "23",
     video_path
 ]
 
-print("Video oluşturuluyor (15 saniye & Türkçe font desteği)...")
 subprocess.run(ffmpeg_command, check=True)
-print("Video başarıyla üretildi!")
+print("Dinamik dedektif videosu başarıyla üretildi!")
 
 # 5. Telegram Kanalına Videoyu Gönder
 TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
@@ -85,15 +112,15 @@ if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID:
     with open(video_path, 'rb') as video_file:
         payload = {
             'chat_id': TELEGRAM_CHAT_ID,
-            'caption': f"🎬 GÜNÜN DEDEKTİFİK VAKASI!\n\n{title_text}\n\n🕵️ Oyuna katılmak ve çözmek için Mini App'e tıkla!"
+            'caption': f"🎬 GÜNÜN DEDEKTİFİK VAKASI (Süre: 55sn)\n\n{title_text}\n\n🕵️ Oyuna katılmak ve çözmek için Mini App'e tıkla!"
         }
         files = {'video': video_file}
         response = requests.post(url, data=payload, files=files)
         print("Telegram Yanıtı:", response.text)
 
-# 6. Endeks numarasını bir artır ve state.json'a kaydet
+# 6. Index'i artır ve kaydet
 state["last_index"] = currentIndex + 1
 with open('state.json', 'w', encoding='utf-8') as f:
     json.dump(state, f, ensure_ascii=False, indent=4)
 
-print("Vaka başarıyla işlendi ve kanala gönderildi!")
+print("İşlem tamamlandı!")
