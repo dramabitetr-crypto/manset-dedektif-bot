@@ -1,235 +1,308 @@
-import json
-import os
-import subprocess
-import textwrap
+import asyncio, json, os, sys, wave, subprocess, textwrap
+import numpy as np
 import requests
 from PIL import Image, ImageDraw, ImageFont
-from gtts import gTTS
 
-# 1. State dosyasını oku
-if os.path.exists('state.json'):
-    with open('state.json', 'r', encoding='utf-8') as f:
-        state = json.load(f)
-else:
-    state = {"last_index": 0}
+W, H, FPS, SR = 1080, 1920, 24, 44100
+LH, LY = 640, 540
+FONT_YOL = ["/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+            "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf"]
+HARF = "ABC"
+RENK = [(60, 130, 235), (240, 140, 40), (150, 90, 220)]
+_F = {}
+def font(s):
+    s = int(s)
+    if s not in _F:
+        f = None
+        for p in FONT_YOL:
+            if os.path.exists(p):
+                f = ImageFont.truetype(p, s); break
+        _F[s] = f or ImageFont.load_default()
+    return _F[s]
 
-currentIndex = state.get("last_index", 0)
+def tr_upper(s):
+    return s.replace("i", "İ").replace("ı", "I").upper()
 
-# 2. Vakalar.json dosyasını oku
-with open('vakalar.json', 'r', encoding='utf-8') as f:
-    cases = json.load(f)
+def yaz(d, xy, t, size, fill=(255, 255, 255), anchor="mm", stroke=0, sf=(0, 0, 0)):
+    d.text(xy, t, font=font(size), fill=fill, anchor=anchor, stroke_width=stroke, stroke_fill=sf)
 
-current_case = cases[currentIndex % len(cases)]
-print(f"İşlenen Vaka: {current_case.get('title', 'Bilinmeyen Vaka')}")
+_G = {}
+def zemin(k):
+    if k not in _G:
+        a, b = {"hook": ((30, 6, 10), (6, 8, 20)), "ipucu": ((8, 14, 34), (14, 30, 58)),
+                "ipucu2": ((10, 26, 30), (8, 12, 28)), "supheli": ((18, 10, 36), (6, 8, 20)),
+                "oy": ((40, 8, 20), (8, 8, 30))}[k]
+        t = np.linspace(0, 1, H)[:, None, None]
+        arr = np.repeat(np.array(a) * (1 - t) + np.array(b) * t, W, axis=1).astype(np.uint8)
+        _G[k] = Image.fromarray(arr, "RGB")
+    return _G[k]
 
-title_text = str(current_case.get('title', 'Apartman Sırrı'))
-raw_content = current_case.get('content', 'Detaylar gizlidir...')
+def sade(s):
+    return s.strip()
 
-if isinstance(raw_content, list):
-    full_story = "\n".join([str(item) for item in raw_content])
-else:
-    full_story = str(raw_content).replace('<b>', '').replace('</b>', '').replace('<br>', '\n')
+# ---------------- cizimler ----------------
+def hook_katman(acik):
+    L = Image.new("RGBA", (W, LH), (0, 0, 0, 0)); d = ImageDraw.Draw(L)
+    d.rectangle((200, 60, 880, 640), fill=(12, 16, 30), outline=(40, 50, 80), width=4)
+    d.polygon([(180, 60), (540, 0), (900, 60)], fill=(20, 24, 44))
+    for r in range(4):
+        for c in range(4):
+            x = 250 + c * 150; y = 110 + r * 135
+            renk = (190, 130, 40) if (r + c) % 3 == 0 else (22, 30, 52)
+            if r == 2 and c == 2: renk = (235, 40, 40) if acik else (110, 20, 24)
+            d.rounded_rectangle((x, y, x + 100, y + 95), 10, fill=renk)
+    return L
 
-# 3. Seslendirme (TTS) Metnini Oluştur
-speech_text = (
-    f"Dikkat dedektif! Yeni vaka dosyası: {title_text}. "
-    f"Saat gece yarısını geçiyordu. Apartmanın karanlık koridorlarında gerilim tırmanıyor. "
-    f"{full_story} "
-    f"Şüpheliler inceleme altında. Süre daralıyor! "
-    f"Katili bulduysan şüphelinin harfini hemen yorumlara yaz ve Telegram Mini App'ten dosyayı mühürle!"
-)
+def ipucu_katman(renk):
+    L = Image.new("RGBA", (W, LH), (0, 0, 0, 0)); d = ImageDraw.Draw(L)
+    d.ellipse((260, 20, 760, 520), fill=(10, 16, 36), outline=renk, width=28)
+    d.line((700, 460, 820, 580), fill=renk, width=42)
+    yaz(d, (510, 270), "?", 330, renk)
+    return L
 
-print("Yapay zeka seslendirmesi üretiliyor...")
-tts = gTTS(text=speech_text, lang='tr', slow=False)
-audio_path = "voiceover.mp3"
-tts.save(audio_path)
+def kart_ciz(d, x0, i, ad, rol):
+    c = RENK[i]
+    d.rounded_rectangle((x0, 30, x0 + 300, 600), 30, fill=(16, 18, 38), outline=c, width=8)
+    d.ellipse((x0 + 100, 70, x0 + 200, 170), fill=(60, 66, 100))
+    d.pieslice((x0 + 60, 170, x0 + 240, 330), 180, 360, fill=(60, 66, 100))
+    d.ellipse((x0 + 105, 290, x0 + 195, 380), fill=c)
+    yaz(d, (x0 + 150, 335), HARF[i], 66, (255, 255, 255))
+    yaz(d, (x0 + 150, 430), tr_upper(ad), 44 if len(ad) < 9 else 36, (255, 255, 255))
+    t = textwrap.wrap(rol, 11)[:2]
+    for n, s in enumerate(t):
+        yaz(d, (x0 + 150, 500 + n * 40), s, 30, (200, 205, 235))
 
-# Ses dosyasının saniyesini hassas şekilde ölçelim
-probe = subprocess.run([
-    "ffprobe", "-v", "error", "-show_entries",
-    "format=duration", "-of",
-    "default=noprint_wrappers=1:nokey=1", audio_path
-], stdout=subprocess.PIPE, text=True)
+def supheli_katman(sup, kac):
+    L = Image.new("RGBA", (W, LH), (0, 0, 0, 0)); d = ImageDraw.Draw(L)
+    for i in range(kac):
+        kart_ciz(d, 40 + i * 345, i, sup[i]["ad"], sup[i]["rol"])
+    return L
 
-try:
-    audio_duration = float(probe.stdout.strip())
-except:
-    audio_duration = 45.0
+def oy_katman(onceki, parla):
+    L = Image.new("RGBA", (W, LH), (0, 0, 0, 0)); d = ImageDraw.Draw(L)
+    for i in range(3):
+        cx = 190 + i * 350
+        r = 130 if parla == i else 118
+        d.ellipse((cx - r, 150 - r, cx + r, 150 + r), fill=RENK[i], outline=(255, 255, 255), width=8)
+        yaz(d, (cx, 150), HARF[i], 150, (255, 255, 255))
+    yaz(d, (540, 360), "YORUMA HARFİNİ YAZ", 58, (255, 235, 110), stroke=6)
+    if onceki:
+        d.rounded_rectangle((60, 430, 1020, 620), 28, fill=(16, 20, 44), outline=(245, 200, 60), width=6)
+        yaz(d, (540, 480), "DÜNKÜ KATİL", 34, (245, 200, 60))
+        yaz(d, (540, 555), tr_upper(onceki), 76, (255, 255, 255), stroke=0)
+    return L
 
-# Video süresini ses dosyasına tam eşitleyelim (en az 40 saniye)
-TOTAL_SECONDS = max(40, int(audio_duration) + 2)
-FPS = 25
-TOTAL_FRAMES = FPS * TOTAL_SECONDS
-print(f"Seslendirme tamamlandı. Toplam Video Süresi: {TOTAL_SECONDS} saniye.")
+# ---------------- ses efektleri ----------------
+def ton(f, s, vol=.5, ck=6):
+    t = np.arange(int(SR * s)) / SR
+    return np.sin(2 * np.pi * f * t) * np.exp(-ck * t) * vol
+def sfx_hit():
+    t = np.arange(int(SR * .8)) / SR
+    n = np.random.RandomState(3).randn(len(t)) * np.exp(-14 * t) * .35
+    return ton(55, .8, .9, 4.5) + n
+def sfx_ding():
+    return np.concatenate([ton(880, .12, .45, 5), ton(1175, .5, .45, 5)])
+def sfx_pop():
+    return np.concatenate([ton(520, .08, .5, 25), ton(780, .1, .4, 20)])
+def sfx_whoosh():
+    n = np.convolve(np.random.RandomState(2).randn(int(SR * .35)), np.ones(60) / 60, "same")
+    return n * np.sin(np.linspace(0, np.pi, len(n))) ** 2 * 1.8
+def sfx_tick():
+    return ton(1500, .04, .5, 60)
 
-# Font yolları (Linux sunucu desteği)
-font_bold = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-font_regular = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+def drone(sn):
+    t = np.arange(int(SR * sn)) / SR
+    trem = 0.7 + 0.3 * np.sin(2 * np.pi * 0.25 * t)
+    return (np.sin(2 * np.pi * 55 * t) * .6 + np.sin(2 * np.pi * 82.4 * t) * .4) * trem * .05
 
-try:
-    title_font = ImageFont.truetype(font_bold, 42)
-    content_font = ImageFont.truetype(font_regular, 28)
-    hook_font = ImageFont.truetype(font_bold, 34)
-    scene_title_font = ImageFont.truetype(font_bold, 36)
-    timer_font = ImageFont.truetype(font_bold, 30)
-    footer_font = ImageFont.truetype(font_regular, 24)
-except:
-    title_font = ImageFont.load_default()
-    content_font = ImageFont.load_default()
-    hook_font = ImageFont.load_default()
-    scene_title_font = ImageFont.load_default()
-    timer_font = ImageFont.load_default()
-    footer_font = ImageFont.load_default()
-
-os.makedirs("frames", exist_ok=True)
-print("Gerilim sahneleri kareleri oluşturuluyor...")
-
-def draw_thriller_background(d, scene_type, frame_idx):
-    # Kan donduran karanlık arka plan
-    d.rectangle([(0, 0), (1080, 1920)], fill="#020408")
-    
-    if scene_type == 1:
-        d.rectangle([(0, 0), (1080, 150)], fill="#450a0a") # Korku Kırmızısı
+# ---------------- vaka -> sahneler ----------------
+def sahneler_yap(v, no, onceki):
+    sup = v["supheliler"]
+    anl3 = "Şüpheliler. " + " ".join(f"{HARF[i]}, {s['ad']}, {s['rol']}." for i, s in enumerate(sup))
+    oy = "Katil kim? Harfini yoruma yaz!"
+    if onceki:
+        oy += f" Dünkü vakada katil {onceki} çıktı. Yarın yeni vaka!"
     else:
-        d.rectangle([(0, 0), (1080, 150)], fill="#090d16") # Gizem Mavisi
+        oy += " Cevabı yarın açıklıyorum!"
+    return [
+        {"tip": "hook", "z": "hook", "baslik": v["baslik"], "anlatim": v["olay"]},
+        {"tip": "ipucu", "z": "ipucu", "baslik": "İPUCU 1", "anlatim": v["ipuclari"][0], "renk": (245, 200, 60)},
+        {"tip": "ipucu", "z": "ipucu2", "baslik": "İPUCU 2", "anlatim": v["ipuclari"][1], "renk": (90, 220, 240)},
+        {"tip": "supheli", "z": "supheli", "baslik": "ŞÜPHELİLER", "anlatim": anl3, "sup": sup},
+        {"tip": "oy", "z": "oy", "baslik": "KATİL KİM?", "anlatim": oy, "onceki": onceki},
+    ]
 
-    d.rectangle([(120, 450), (960, 1850)], fill="#090e1a", outline="#1e293b", width=4)
-    
-    floor_height = 200
-    start_y = 520
-    
-    for floor in range(6):
-        y = start_y + (floor * floor_height)
-        d.line([(120, y - 20), (960, y - 20)], fill="#1e293b", width=2)
-        
-        for win in range(3):
-            wx = 180 + (win * 260)
-            wy = y
-            if floor == 4 and scene_type == 1:
-                win_color = "#ef4444" if (frame_idx // 10) % 2 == 0 else "#7f1d1d"
-            elif floor == 1 and scene_type == 2:
-                win_color = "#38bdf8"
-            else:
-                win_color = "#b45309" if (floor + win + frame_idx // 25) % 3 == 0 else "#0f172a"
-            d.rounded_rectangle([(wx, wy), (wx + 110, wy + 130)], radius=10, fill=win_color)
+def kelime_gruplari(metin):
+    gr = []; cur = []
+    for w in metin.split():
+        if cur and (len("".join(cur)) + len(w) > 15 or len(cur) >= 3):
+            gr.append(cur); cur = []
+        cur.append(w)
+        if w[-1] in ".?!,": gr.append(cur); cur = []
+    if cur: gr.append(cur)
+    return [" ".join(g) for g in gr]
 
-    if scene_type == 2:
-        # Büyüteç ve Fincan Çizimi
-        d.ellipse([(800, 250), (920, 370)], outline="#38bdf8", width=8)
-        d.line([(890, 340), (950, 400)], fill="#38bdf8", width=8)
-        d.rounded_rectangle([(150, 280), (220, 360)], radius=6, fill="#334155")
-        d.arc([(210, 290), (250, 340)], start=270, end=90, fill="#334155", width=5)
+def zamanla(metin, dur):
+    gr = kelime_gruplari(metin)
+    if not gr: return []
+    agr = [len(g) + 3 + (6 if g[-1] in ".?!" else 2 if g[-1] == "," else 0) for g in gr]
+    top = sum(agr); t = 0.05; out = []
+    for g, a in zip(gr, agr):
+        l = (dur - 0.15) * a / top
+        out.append((t, t + l, tr_upper(g))); t += l
+    return out
 
-for frame_idx in range(TOTAL_FRAMES):
-    current_sec = frame_idx / FPS
-    
-    # Süreye oranlı dinamik sahne geçişleri
-    phase_1 = TOTAL_SECONDS * 0.25
-    phase_2 = TOTAL_SECONDS * 0.70
-    
-    if current_sec < phase_1:
-        scene_type = 1
-        scene_title = "⚠️ KAN DONDURAN ÇIĞLIK!"
-        narrative = (
-            "Saat gece yarısını çoktan geçiyordu...\n"
-            "Apartmanın karanlık koridorlarında o acımasız ayak sesleri "
-            "yankılandığında, herkes uykudaydı ama o... uyanıktı.\n\n"
-            "7 numaralı gizli daireden gelen panik dolu fısıltılar "
-            "biraz sonra işlenecek cinayetin habercisiydi."
-        )
-        box_bg = "#180505"
-        border_col = "#dc2626"
-    elif current_sec < phase_2:
-        scene_type = 2
-        scene_title = f"📁 DELİL DOSYASI: {title_text}"
-        wrapped_lines = textwrap.wrap(full_story, width=40)
-        narrative = "\n".join(wrapped_lines[:10])
-        box_bg = "#08101d"
-        border_col = "#38bdf8"
-    else:
-        scene_type = 3
-        scene_title = "🔍 ŞÜPHELİLER ÇEMBERİ"
-        narrative = (
-            "A) Zemin Kattaki Müdür: 'O saatte uyuyordum' diyor ama elleri titriyor.\n\n"
-            "B) 2. Kattaki Komşu: Elindeki lekeli bezi gizlemeye çalışıyor.\n\n"
-            "C) Boş olduğu bilinen daireden gelen taze kahve kokusu...\n\n"
-            "Süre daralıyor dedektif! Katil bu binanın içinde."
-        )
-        box_bg = "#111827"
-        border_col = "#f43f5e"
+def katmanlar(sc):
+    if sc["tip"] == "hook": return [hook_katman(True), hook_katman(False)]
+    if sc["tip"] == "ipucu": return [ipucu_katman(sc["renk"])]
+    if sc["tip"] == "supheli": return [supheli_katman(sc["sup"], k) for k in (1, 2, 3)]
+    return [oy_katman(sc["onceki"], p) for p in (-1, 0, 1, 2)]
 
-    img = Image.new('RGB', (1080, 1920), color='#020408')
-    d = ImageDraw.Draw(img)
-    draw_thriller_background(d, scene_type, frame_idx)
+def katman_sec(s, lt):
+    tip = s["sc"]["tip"]; n = len(s["kat"])
+    if tip == "hook": return int(lt * 3) % 2
+    if tip == "supheli": return min(n - 1, int(lt / (s["dur"] * .8) * 3))
+    if tip == "oy": return min(n - 1, int(lt * 1.2) % 4)
+    return 0
 
-    # Sağ üst köşe sayaç (Son 15 saniyede aktif)
-    if current_sec >= (TOTAL_SECONDS - 15):
-        rem_time = max(0, int(TOTAL_SECONDS - current_sec))
-        d.rounded_rectangle([(800, 40), (1040, 110)], radius=15, fill="#18181b", outline="#ef4444", width=3)
-        d.text((830, 57), f"⏳ 0:{rem_time:02d}", fill="#ef4444", font=timer_font)
-    else:
-        d.rounded_rectangle([(800, 40), (1040, 110)], radius=15, fill="#18181b", outline="#38bdf8", width=2)
-        d.text((825, 57), "🔎 GİZLİ DOSYA", fill="#38bdf8", font=footer_font)
+def plan(sahneler, sureler):
+    out = []; bas = 0.0
+    for sc, dur in zip(sahneler, sureler):
+        out.append({"sc": sc, "bas": bas, "dur": dur, "kat": katmanlar(sc), "cap": zamanla(sc["anlatim"], dur)})
+        bas += dur
+    return out, bas
 
-    d.rectangle([(0, 0), (770, 110)], fill="#0b0f19")
-    d.text((40, 35), "🩸 MANŞET DEDEKTİF | GERİLİM SERİSİ", fill="#ef4444" if scene_type==1 else "#38bdf8", font=hook_font)
+_C = {}
+def chunk_resim(t):
+    if t not in _C:
+        sz = 108
+        while font(sz).getlength(t) > 960 and sz > 40: sz -= 4
+        im = Image.new("RGBA", (1040, 200), (0, 0, 0, 0))
+        yaz(ImageDraw.Draw(im), (520, 100), t, sz, (255, 228, 60), stroke=11)
+        _C[t] = im
+    return _C[t]
 
-    d.rounded_rectangle([(60, 1120), (1020, 1580)], radius=20, fill=box_bg, outline=border_col, width=3)
-    d.text((100, 1155), scene_title, fill="#fbbf24", font=scene_title_font)
-    d.line([(100, 1215), (980, 1215)], fill="#334155", width=2)
-    d.text((100, 1245), narrative, fill="#f8fafc", font=content_font)
+def ease(x):
+    x = max(0.0, min(1.0, x)); return 1 - (1 - x) ** 3
 
-    d.rounded_rectangle([(60, 1610), (1020, 1880)], radius=15, fill="#0c4a6e", outline="#38bdf8", width=2)
-    cta_title = "🎯 KATİLİ BULDUN MU?"
-    cta_desc = (
-        "Cevabı bulduysan şüphelinin harfini (A, B veya C) hemen\n"
-        "yorumlar kısmına yaz, Telegram Mini App'ten dosyayı mühürle! 👇\n\n"
-        "t.me/manset_dedektif_bot/dedektif"
-    )
-    d.text((100, 1645), cta_title, fill="#38bdf8", font=hook_font)
-    d.text((100, 1715), cta_desc, fill="#e0f2fe", font=content_font)
+def kare(no, sah, toplam, t):
+    i = 0
+    for k, s in enumerate(sah):
+        if s["bas"] <= t: i = k
+    s = sah[i]; sc = s["sc"]; lt = t - s["bas"]
+    img = zemin(sc["z"]).copy(); d = ImageDraw.Draw(img)
+    kat = s["kat"][katman_sec(s, lt)]
+    z = 1 + 0.07 * (lt / s["dur"])
+    cw, ch = W / z, LH / z
+    kes = kat.crop((int((W - cw) / 2), int((LH - ch) / 2), int((W + cw) / 2), int((LH + ch) / 2))).resize((W, LH), Image.BILINEAR)
+    img.paste(kes, (0, int(LY + 80 * (1 - ease(lt / .2))) if lt < .2 else LY), kes)
+    d.rounded_rectangle((30, 40, 1050, 200), 36, fill=(12, 8, 18), outline=(220, 40, 50), width=5)
+    yaz(d, (70, 100), "MANŞET DEDEKTİF", 48, (240, 70, 70), "lm")
+    yaz(d, (70, 155), "GİZEMLİ VAKA SERİSİ", 28, (190, 195, 225), "lm")
+    d.rounded_rectangle((760, 70, 1010, 170), 24, fill=(220, 40, 50))
+    yaz(d, (885, 120), f"DOSYA #{no:02d}", 42, (255, 255, 255))
+    bs = textwrap.wrap(tr_upper(sc["baslik"]), 16)[:2]
+    for n, satir in enumerate(bs):
+        yaz(d, (540, 300 + n * 100 - (len(bs) - 1) * 40), satir, 92, (255, 255, 255), stroke=9)
+    for a, b, tx in s["cap"]:
+        if a <= lt < b:
+            im = chunk_resim(tx); p = ease((lt - a) / .09); sc3 = .8 + .2 * p
+            if sc3 < .999: im = im.resize((int(im.width * sc3), int(im.height * sc3)), Image.BILINEAR)
+            img.paste(im, (540 - im.width // 2, 1370 - im.height // 2), im)
+            break
+    d.rectangle((0, 1790, int(W * t / toplam), 1802), fill=(240, 70, 70))
+    yaz(d, (540, 1850), "t.me/manset_dedektif_bot/dedektif  ·  kurgusal vaka", 30, (225, 228, 245))
+    return img
 
-    frame_name = os.path.join("frames", f"frame_{frame_idx:04d}.png")
-    img.save(frame_name)
+# ---------------- ses ----------------
+def wav_oku(yol):
+    with wave.open(yol, "rb") as w:
+        return np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16).astype(np.float32) / 32768
 
-print("Kareler tamamlandı, FFmpeg ile ses ve görüntü birleştiriliyor...")
+def yaz_wav(yol, a):
+    a = np.clip(a, -1, 1)
+    with wave.open(yol, "wb") as w:
+        w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR)
+        w.writeframes((a * 32767).astype(np.int16).tobytes())
 
-# 4. FFmpeg ile Görüntü ve Seslendirmeyi Birleştirme
-video_path = "gunun_vakasi.mp4"
-ffmpeg_command = [
-    "ffmpeg", "-y",
-    "-framerate", str(FPS),
-    "-i", "frames/frame_%04d.png",
-    "-i", audio_path,
-    "-c:v", "libx264",
-    "-pix_fmt", "yuv420p",
-    "-c:a", "aac",
-    "-b:a", "192k",
-    "-shortest",
-    video_path
-]
+async def tts(metin, mp3):
+    import edge_tts
+    await edge_tts.Communicate(metin, "tr-TR-AhmetNeural", rate="+10%", pitch="-4Hz").save(mp3)
 
-subprocess.run(ffmpeg_command, check=True)
-print("Seslendirmeli gerilim videosu başarıyla üretildi!")
+def ses_uret(i, metin):
+    wav = f"tmp{i}.wav"
+    if os.environ.get("SAHTE_SES"):
+        yaz_wav(wav, ton(220, max(1, len(metin.split())) * 0.36, .2, 0.1)); return wav_oku(wav)
+    mp3 = f"tmp{i}.mp3"
+    asyncio.run(tts(metin, mp3))
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", mp3, "-ar", str(SR), "-ac", "1", wav], check=True)
+    return wav_oku(wav)
 
-# 5. Telegram'a Gönderim
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
-TELEGRAM_CHAT_ID = os.environ.get("TELEGRAM_CHAT_ID")
+def karisim(sah, toplam, sesler):
+    buf = np.zeros(int(SR * (toplam + 1)), dtype=np.float32)
+    def ekle(x, sn, v=1.0):
+        a = int(sn * SR); x = np.asarray(x, dtype=np.float32)[:max(0, len(buf) - a)] * v
+        buf[a:a + len(x)] += x
+    ekle(drone(toplam + .5), 0, 1.0)
+    for n, (s, ses) in enumerate(zip(sah, sesler)):
+        pk = np.max(np.abs(ses)) or 1
+        ekle(ses / pk * .9, s["bas"] + .05)
+        tip = s["sc"]["tip"]
+        if n == 0: ekle(sfx_hit(), 0.0, .8)
+        else: ekle(sfx_whoosh(), s["bas"], .15)
+        if tip == "ipucu": ekle(sfx_ding(), s["bas"] + .1, .6)
+        if tip == "supheli":
+            for k in range(3): ekle(sfx_pop(), s["bas"] + k * s["dur"] * .8 / 3, .6)
+        if tip == "oy":
+            for k in range(3): ekle(sfx_tick(), s["bas"] + s["dur"] - 1.2 + k * .35, .5)
+    return buf
 
-if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID:
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendVideo"
-    with open(video_path, 'rb') as video_file:
-        payload = {
-            'chat_id': TELEGRAM_CHAT_ID,
-            'caption': f"🩸 SESLENDİRMELİ VAKA: {title_text}\n\n🕵️ Katili bulduysan yorumlara yaz ve Mini App'ten çöz!\nt.me/manset_dedektif_bot/dedektif"
-        }
-        files = {'video': video_file}
-        response = requests.post(url, data=payload, files=files)
-        print("Telegram Yanıtı:", response.text)
+def temiz_ad(c):
+    s = c.strip()
+    return s
 
-# 6. Index Güncelleme
-state["last_index"] = currentIndex + 1
-with open('state.json', 'w', encoding='utf-8') as f:
-    json.dump(state, f, ensure_ascii=False, indent=4)
+def telegram(video, baslik, no, cozum):
+    tok = os.environ.get("TELEGRAM_BOT_TOKEN"); chat = os.environ.get("TELEGRAM_CHAT_ID")
+    if not (tok and chat):
+        print("Telegram bilgisi yok, gönderilmedi"); return
+    ac = (f"Dosya #{no:02d}: {baslik}\n\n"
+          f"Yarınki videoda söyleyeceğin cevap:\n{cozum}\n\n"
+          "#dedektif #gizem #vaka #kurgusalhikaye")
+    with open(video, "rb") as f:
+        r = requests.post(f"https://api.telegram.org/bot{tok}/sendVideo",
+                          data={"chat_id": chat, "caption": ac[:1000]}, files={"video": f})
+    print("Telegram:", r.status_code, r.text[:200])
 
-print("İşlem başarıyla tamamlandı!")
+def main():
+    vakalar = json.load(open("vakalar_v2.json", encoding="utf-8"))
+    durum = json.load(open("state.json", encoding="utf-8")) if os.path.exists("state.json") else {}
+    secili = (os.environ.get("VAKA_NO") or "").strip()
+    idx = (int(secili) - 1) if secili.isdigit() else durum.get("v2_index", 0)
+    idx %= len(vakalar)
+    v = vakalar[idx]; no = idx + 1
+    onceki = vakalar[idx - 1]["supheliler"][vakalar[idx - 1]["dogru"]]["ad"] if idx > 0 else None
+    print("Vaka:", no, v["baslik"])
+    sahneler = sahneler_yap(v, no, onceki)
+    sesler = []; sureler = []
+    for i, sc in enumerate(sahneler):
+        a = ses_uret(i, sc["anlatim"])
+        sesler.append(a); sureler.append(len(a) / SR + (.25 if i == 0 else .35))
+    sah, top = plan(sahneler, sureler)
+    yaz_wav("ses.wav", karisim(sah, top, sesler))
+    kare(no, sah, top, 1.0).save("kapak.png")
+    p = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
+                          "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-", "-i", "ses.wav",
+                          "-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-pix_fmt", "yuv420p",
+                          "-c:a", "aac", "-b:a", "160k", "-t", f"{top:.2f}", "-movflags", "+faststart",
+                          "gunun_vakasi.mp4"], stdin=subprocess.PIPE)
+    for n in range(int(top * FPS)):
+        p.stdin.write(kare(no, sah, top, n / FPS).tobytes())
+    p.stdin.close(); p.wait()
+    print("Video hazır:", round(top, 1), "sn")
+    telegram("gunun_vakasi.mp4", v["baslik"], no, v["cozum"])
+    if not secili.isdigit():
+        durum["v2_index"] = idx + 1
+        json.dump(durum, open("state.json", "w", encoding="utf-8"), ensure_ascii=False, indent=4)
+
+if __name__ == "__main__":
+    main()

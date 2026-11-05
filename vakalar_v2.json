@@ -1,0 +1,92 @@
+[
+  {
+    "baslik": "Antikacıdaki Saat",
+    "olay": "Sabah dükkânı açan sahibi, vitrindeki altın cep saatinin yok olduğunu gördü. Kapı zorlanmamıştı.",
+    "ipuclari": [
+      "Alarm, gece saat üçte dört haneli şifreyle kapatılmış. Şifreyi yalnızca iki kişi biliyor: ortak Kerem ve çırak Mert.",
+      "Mert o gece memleketinde bir düğündeydi. Saat üçte çekilmiş fotoğrafları var."
+    ],
+    "supheliler": [
+      {"ad": "Canan", "rol": "temizlikçi"},
+      {"ad": "Kerem", "rol": "ortak"},
+      {"ad": "Mert", "rol": "çırak"}
+    ],
+    "dogru": 1,
+    "cozum": "Şifreyi yalnızca Kerem ve Mert biliyordu. Mert düğündeydi. Saati alan ortak Kerem'di."
+  },
+  {
+    "baslik": "Müzedeki Tablo",
+    "olay": "Gece yarısı müzeden altı kiloluk bir tablo çalındı. Gece bekçisi Tarık şöyle diyor: elektrikler kesildi, kapılar kilitli kaldı, hiçbir şey yapamadım.",
+    "ipuclari": [
+      "Müzenin kapılarında manyetik kilit var. Elektrik kesilince bu kilitler kendiliğinden açılır.",
+      "Müdür Selim o gece uçaktaydı. Restoratör Ayla'nın giriş kartı bütün gece okutulmamış."
+    ],
+    "supheliler": [
+      {"ad": "Tarık", "rol": "gece bekçisi"},
+      {"ad": "Selim", "rol": "müze müdürü"},
+      {"ad": "Ayla", "rol": "restoratör"}
+    ],
+    "dogru": 0,
+    "cozum": "Manyetik kilitler elektrik kesilince açılır. Tarık'ın kilitli kaldığı yalandı. Selim uçaktaydı, Ayla müzeye girmemişti."
+  },
+  {
+    "baslik": "Karlı Bahçe",
+    "olay": "Bir malikânede gece mücevher kutusu çalındı. Sabah bahçede karın üzerinde ayak izleri vardı.",
+    "ipuclari": [
+      "Kar gece ondan önce durmuş. Bahçedeki izlerin hepsi evden dışarı gidiyor. Dışarıdan eve giren tek bir iz yok.",
+      "İzler kırk iki numara bir ayakkabıya ait. Hizmetçi Nermin otuz yedi numara giyiyor. Evde kalan yeğen Cem ise kırk iki numara."
+    ],
+    "supheliler": [
+      {"ad": "Ferit", "rol": "komşu"},
+      {"ad": "Nermin", "rol": "hizmetçi"},
+      {"ad": "Cem", "rol": "evde kalan yeğen"}
+    ],
+    "dogru": 2,
+    "cozum": "İzler yalnızca dışarı çıkıyordu, yani hırsız zaten evdeydi. Kırk iki numara ayak Nermin'e uymuyordu. Hırsız yeğen Cem'di."
+  },
+  {
+    "baslik": "Karanlık Mahalle",
+    "olay": "Gece saat ikiye doğru mahalledeki kuyumcu soyuldu. Üç komşunun ifadesi alındı.",
+    "ipuclari": [
+      "Mahallede gece birden üçe kadar elektrik kesikti. Her yer zifiri karanlıktı.",
+      "Nuri, gece ikide televizyonda maç izlediğini söyledi. Ece, mum ışığında kitap okuduğunu söyledi. Baran, telefonunun şarjı bitince uyuduğunu söyledi."
+    ],
+    "supheliler": [
+      {"ad": "Ece", "rol": "komşu"},
+      {"ad": "Nuri", "rol": "komşu"},
+      {"ad": "Baran", "rol": "komşu"}
+    ],
+    "dogru": 1,
+    "cozum": "Elektrik kesikken televizyon izlenemez. Yalan söyleyen Nuri'ydi."
+  },
+  {
+    "baslik": "Sınav Soruları",
+    "olay": "Okulda, müdürün kilitli çekmecesindeki sınav sorularının fotoğrafı çekildi. Fotoğrafın tarihi, bir pazar günü öğleden sonra.",
+    "ipuclari": [
+      "Pazar günleri okul kapalıdır. Giriş kartı kayıtlarına göre, o pazar okula yalnızca bir kişi girmiş.",
+      "Öğretmen Sevgi o hafta sonu şehir dışındaydı. Müdür yardımcısı Orhan tatildeydi. Bekçi Kadir'in elinde ise bütün odaların yedek anahtarı var."
+    ],
+    "supheliler": [
+      {"ad": "Sevgi", "rol": "öğretmen"},
+      {"ad": "Orhan", "rol": "müdür yardımcısı"},
+      {"ad": "Kadir", "rol": "bekçi"}
+    ],
+    "dogru": 2,
+    "cozum": "Pazar günü okulda yalnızca bekçi Kadir vardı ve yedek anahtar onda. Sevgi ile Orhan şehir dışındaydı."
+  },
+  {
+    "baslik": "Kırık Vitrin",
+    "olay": "Kuyumcunun vitrini kırılıp bir yüzük alındı. Camdaki kırılma izi çok net.",
+    "ipuclari": [
+      "Cam, sol taraftan vurularak kırılmış. Uzmanlara göre bu vuruşu ancak solak biri yapabilir.",
+      "Üç şüpheli çay içerken izlendi. Taner bardağı sağ elle tuttu. Pınar sol elle tuttu. Oya sağ elle tuttu."
+    ],
+    "supheliler": [
+      {"ad": "Pınar", "rol": "kasiyer"},
+      {"ad": "Taner", "rol": "tamirci"},
+      {"ad": "Oya", "rol": "komşu"}
+    ],
+    "dogru": 0,
+    "cozum": "Vuruş izi solak birine aitti. Çay içerken yalnızca Pınar bardağı sol eliyle tuttu."
+  }
+]
