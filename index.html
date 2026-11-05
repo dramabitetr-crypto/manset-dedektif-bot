@@ -137,11 +137,13 @@
             if (isCorrect) {
                 btnElement.classList.add('correct');
                 resultDiv.innerHTML = "🎉 TEBRİKLER DETEKTİF! Olayı çözdün.";
+                resultDiv.innerHTML += "<br><small>" + (cases[currentCaseIndex].cozum || "") + "</small>";
                 resultDiv.style.color = "#4ade80";
                 if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('success');
             } else {
                 btnElement.classList.add('wrong');
                 resultDiv.innerHTML = "❌ YANLIŞ TAHMİN! Katil bu değil.";
+                resultDiv.innerHTML += "<br><small>" + (cases[currentCaseIndex].cozum || "") + "</small>";
                 resultDiv.style.color = "#f87171";
                 if (tg.HapticFeedback) tg.HapticFeedback.notificationOccurred('error');
             }

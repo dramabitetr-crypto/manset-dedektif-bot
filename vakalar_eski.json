@@ -1,0 +1,1802 @@
+[
+  {
+    "title": "🕵️ VAKA #01: Antika Saat",
+    "content": "<b>Olay:</b> Sabah 10:00'da dükkanda altın saat çalındı. Kapıda zorlama yok, alarm hiç çalmadı!<br><br><b>İpucu:</b> Vitrindeki camda sadece temizlikçinin parmak izi var ama o her gün temizlik yapıyor. Hırsız kapıyı açmadan nasıl girdi?",
+    "suspects": [
+      {
+        "text": "🕵️ 1. Kerem (Ortak)",
+        "correct": false
+      },
+      {
+        "text": "🧹 2. Canan (Temizlikçi)",
+        "correct": true
+      },
+      {
+        "text": "👦 3. Mert (Çırak)",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #02: Müze Soygunu",
+    "content": "<b>Olay:</b> Gece yarısı müzede paha biçilemez tablo çalındı. Güvenlik kamerası kayıtlarında sadece sabaha karşı patlayan bir elektrik trafosu arızası görünüyor.<br><br><b>İpucu:</b> Güvenlik görevlisi içeride kilitli kaldığını söylüyor ama kapı dışarıdan kilitlenmiş.",
+    "suspects": [
+      {
+        "text": "🚨 1. Tarık (Gece Bekçisi)",
+        "correct": true
+      },
+      {
+        "text": "🖼️ 2. Selim (Müze Müdürü)",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlik Ekibi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #03: Gizli Kasa",
+    "content": "<b>Olay:</b> Ofisteki çelik kasadan para çalındı. Kasanın şifresini sadece patron biliyordu ve kimseyle paylaşmamıştı.<br><br><b>İpucu:</b> Patron tatildeydi ve kasada hiçbir zorlama izi yoktu.",
+    "suspects": [
+      {
+        "text": "💻 1. Şirket Hacker'ı",
+        "correct": false
+      },
+      {
+        "text": "🔑 2. Temizlikçi Kadın",
+        "correct": false
+      },
+      {
+        "text": "📷 3. Kameradaki Yansıma (Şifreyi çözen)",
+        "correct": true
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #04: Zehirli Kahve",
+    "content": "<b>Olay:</b> Ünlü iş insanı şirket toplantısında içtiği kahveden zehirlendi. Bardakta parmak izi bırakılmamış.<br><br><b>İpucu:</b> Garson fincanı masaya bıraktıktan sonra kimse masaya yaklaşmadı ancak maktulün kolyasındaki damla zehirlenmişti.",
+    "suspects": [
+      {
+        "text": "☕ 1. Asistan (Kolyeye zehir süren)",
+        "correct": true
+      },
+      {
+        "text": "🤵 2. Garson",
+        "correct": false
+      },
+      {
+        "text": "🤝 3. İş Ortağı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #05: Kütüphane Cinayeti",
+    "content": "<b>Olay:</b> Sessiz kütüphanenin arka odasında araştırmacı ölü bulundu. Masada açık bir kitap ve yanında zehirli ok vardı.<br><br><b>İpucu:</b> Olay günü kütüphaneye giren tek kişi kütüphane memuruydu ve ellerinde eldiven vardı.",
+    "suspects": [
+      {
+        "text": "📚 1. Kütüphane Memuru",
+        "correct": true
+      },
+      {
+        "text": "🎓 2. Tarihçi Öğrenci",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #06: Sahildeki Ayak İzleri",
+    "content": "<b>Olay:</b> Sahilde ıssız bir köşede değerli bir çanta çalındı. Kumda sadece tek bir kişinin gidiş ve dönüş ayak izleri var.<br><br><b>İpucu:</b> Hırsız arkasında hiç iz bırakmadan çantayı nasıl kaçırdı? Çantanın sahibi denizdeydi.",
+    "suspects": [
+      {
+        "text": "🏊 1. Yüzücü",
+        "correct": false
+      },
+      {
+        "text": "🪂 2. Yamaç Paraşütçüsü (Havadan alan)",
+        "correct": true
+      },
+      {
+        "text": "🚶 3. Yürüyüş Yapan Turist",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #07: Otel Odası Sırrı",
+    "content": "<b>Olay:</b> 5. kattaki otel odasında değerli elmas kayboldu. Pencerede sineklikler kapalı ve kilitliydi, kapı ise içeriden sürgülenmişti.<br><br><b>İpucu:</b> Odada su birikintisi vardı ve klima sonuna kadar çalışıyordu.",
+    "suspects": [
+      {
+        "text": "🧊 1. Buz Kalıbıyla Kapıyı Kilitleyen",
+        "correct": true
+      },
+      {
+        "text": "🛎️ 2. Oda Görevlisi",
+        "correct": false
+      },
+      {
+        "text": "🧳 3. Yandaki Oda Müşterisi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #08: Laboratuvar Hırsızlığı",
+    "content": "<b>Olay:</b> Gizli formülün bulunduğu flash bellek kilitli çekmeceden alındı. Çekmeceyi açmak için parmak izi şarttı.<br><br><b>İpucu:</b> Güvenlik sisteminde hata yoktu ancak bilim insanının sabah bıraktığı kahve fincanında parmak izi kopyalanmıştı.",
+    "suspects": [
+      {
+        "text": "🥼 1. Asistan Bilim İnsanı",
+        "correct": true
+      },
+      {
+        "text": "🔬 2. Laboratuvar Müdürü",
+        "correct": false
+      },
+      {
+        "text": "⚡ 3. Elektrikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #09: Sanat Galerisi",
+    "content": "<b>Olay:</b> Resim sergisinde tablo değiştirildi. Orijinali yerine kopyası asıldı. Değişim sadece 2 dakika sürmüştü.<br><br><b>İpucu:</b> Galeride o an sadece ressam, galeri sahibi ve bir eleştirmen vardı.",
+    "suspects": [
+      {
+        "text": "🖼️ 1. Galeri Sahibi (Sigortadan para almak isteyen)",
+        "correct": true
+      },
+      {
+        "text": "🎨 2. Ünlü Ressam",
+        "correct": false
+      },
+      {
+        "text": "🧐 3. Sanat Eleştirmeni",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #10: Donmuş Göl",
+    "content": "<b>Olay:</b> Donmuş gölün ortasında değerli bir kürk ve çanta bulundu ancak sahibi ortada yoktu.<br><br><b>İpucu:</b> Gölün buzunun üzerinde sadece bir helikopter pervanesinin yarattığı erime izleri vardı.",
+    "suspects": [
+      {
+        "text": "🚁 1. Kaçakçılar (Helikopterle kaçıran)",
+        "correct": true
+      },
+      {
+        "text": "⛸️ 2. Buz Patencisi",
+        "correct": false
+      },
+      {
+        "text": "🎣 3. Balıkçı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #11: Kapalı Kasa Treni",
+    "content": "<b>Olay:</b> Hareket halindeki trende yolcunun cüzdanı çalındı. Tren hiç durmadı ve vagonlar arası geçişler kilitliydi.<br><br><b>İpucu:</b> Hırsızlık anında tünelden geçiliyordu ve camlar açıktı.",
+    "suspects": [
+      {
+        "text": "🪟 1. Yan Koltuktaki Yolcu (Dışarıdan uzanan)",
+        "correct": true
+      },
+      {
+        "text": "🚂 2. Kondüktör",
+        "correct": false
+      },
+      {
+        "text": "☕ 3. Büfeci",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #12: Gece Kulübü Kavgası",
+    "content": "<b>Olay:</b> Kulübün vip locasında cinayet işlendi. Şahitler gürültüden hiçbir şey duymadıklarını söyledi.<br><br><b>İpucu:</b> Maktulün kulağındaki kulaklıkta son ses müzik çalmaktaydı ve katil arkasından yaklaşmıştı.",
+    "suspects": [
+      {
+        "text": "👥 1. Locadaki Yakın Arkadaş",
+        "correct": true
+      },
+      {
+        "text": "🎶 2. DJ",
+        "correct": false
+      },
+      {
+        "text": "🛡️ 3. Koruma Görevlisi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #13: Çiftlik Evi",
+    "content": "<b>Olay:</b> Çiftlik evindeki tavuklar gece çalındı. Kümesin kapısı dışarıdan kilitliydi ve kilitte hiç zorlama yoktu.<br><br><b>İpucu:</b> Kümesin tel örgüsünde büyük bir kesik vardı ancak hırsız çok zayıf biriydi.",
+    "suspects": [
+      {
+        "text": "🦊 1. Dışarıdan gelen profesyonel hırsız",
+        "correct": false
+      },
+      {
+        "text": "🧑‍🌾 2. Çiftlikteki Çocuk (Teli söküp giren)",
+        "correct": true
+      },
+      {
+        "text": "🚜 3. Komşu Çiftçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #14: Antik Heykel",
+    "content": "<b>Olay:</b> Müzedeki heykelin kaidesi boş kaldı. Güvenlik kameraları aralıksız çalışıyordu ama kayıtlarda kimse görülmüyordu.<br><br><b>İpucu:</b> Kayıtlardaki video döngüye (loop) alınmıştı ve sistem uzaktan hacklenmişti.",
+    "suspects": [
+      {
+        "text": "💻 1. Sistem Uzmanı Hacker",
+        "correct": true
+      },
+      {
+        "text": "🏛️ 2. Müze Müdürü",
+        "correct": false
+      },
+      {
+        "text": "👮 3. Nöbetçi Polis",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #15: Kripto Cüzdan",
+    "content": "<b>Olay:</b> Yazılımcının bilgisayarından tüm varlıkları çalındı. Bilgisayarında şifreli ekran kilitliydi.",
+    "suspects": [
+      {
+        "text": "☕ 1. Kahve Dükkanındaki Wi-Fi Casusu",
+        "correct": true
+      },
+      {
+        "text": "🏠 2. Ev Arkadaşı",
+        "correct": false
+      },
+      {
+        "text": "📉 3. Borsa Sistemi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #16: Hayalet Gemi",
+    "content": "<b>Olay:</b> Limana demirleyen boş gemide kaptanın eşyaları yerli yerindeydi ama kendisi yoktu.",
+    "suspects": [
+      {
+        "text": "🌊 1. Fırtınada Denize Düşen Kaptan",
+        "correct": true
+      },
+      {
+        "text": "🏴‍☠️ 2. Korsanlar",
+        "correct": false
+      },
+      {
+        "text": "⚓ 3. Liman Memuru",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #17: Şato Sırrı",
+    "content": "<b>Olay:</b> Eski şatonun kilitli kulesinde hazine kayboldu. Kuleye çıkan merdivenler tahta kurusu nedeniyle çökmüştü.",
+    "suspects": [
+      {
+        "text": "🪂 1. Pencereden İple İnen Hırsız",
+        "correct": true
+      },
+      {
+        "text": "👻 2. Hayalet Hikayesi",
+        "correct": false
+      },
+      {
+        "text": "🏰 3. Şato Rehberi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #18: Sınav Soruları",
+    "content": "<b>Olay:</b> Final sınavı soruları sınavdan önce internete sızdırıldı. Kasa dairesine sadece müdür girebiliyordu.",
+    "suspects": [
+      {
+        "text": "📸 1. Müdürün Çekmeceden Fotoğraf Çeken Çocuğu",
+        "correct": true
+      },
+      {
+        "text": "👨‍🎓 2. Çalışkan Öğrenci",
+        "correct": false
+      },
+      {
+        "text": "🏫 3. Okul Bekçisi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #19: Parktaki Gizem",
+    "content": "<b>Olay:</b> Kalabalık parkta bankta oturan adam hareketsiz bulundu. Elinde bir zarf vardı.",
+    "suspects": [
+      {
+        "text": "💌 1. Gizli Ajandaki Zehirli Zarfı Bırakan Casus",
+        "correct": true
+      },
+      {
+        "text": "🏃 2. Koşu Yapan Sporcu",
+        "correct": false
+      },
+      {
+        "text": "🍦 3. Dondurmacı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #20: Tiyatro Sahnesi",
+    "content": "<b>Olay:</b> Tiyatro oyununda kullanılan gerçek hançerle başrol oyuncusu yaralandı.",
+    "suspects": [
+      {
+        "text": "🎭 1. Rolü Almak İsteyen Yedek Oyuncu",
+        "correct": true
+      },
+      {
+        "text": "🎬 2. Yönetmen",
+        "correct": false
+      },
+      {
+        "text": "💡 3. Işık Sorumlusu",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #21: Gözlükteki Parmak İzi",
+    "content": "<b>Olay:</b> Ofiste masasında uyuyan adamın cüzdanı çalındı. Gözlükleri yerde kırılmıştı.",
+    "suspects": [
+      {
+        "text": "👓 1. Yakın Arkadaşı (Gözlüğü düşüren)",
+        "correct": true
+      },
+      {
+        "text": "🧹 2. Temizlikçi",
+        "correct": false
+      },
+      {
+        "text": "📦 3. Kurye",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #22: Kanyonun Dibinde",
+    "content": "<b>Olay:</b> Doğa yürüyüşçüsü kanyonun dibinde mahsur kaldı. Telefonu çekmiyordu.",
+    "suspects": [
+      {
+        "text": "🛰️ 1. Uydu Mesajı Gönderen Akıllı Saat Sahibi",
+        "correct": true
+      },
+      {
+        "text": "🦅 2. Yoldan Geçen Turist",
+        "correct": false
+      },
+      {
+        "text": "🐻 3. Avcı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #23: Çalınan Otomobil",
+    "content": "<b>Olay:</b> Kapalı otoparktaki lüks araba alarm çalmadan çalındı.",
+    "suspects": [
+      {
+        "text": "📡 1. Sinyal Kopyalayan Profesyonel Çete",
+        "correct": true
+      },
+      {
+        "text": "🅿️ 2. Otopark Görevlisi",
+        "correct": false
+      },
+      {
+        "text": "🚗 3. Eski Sahibi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #24: Gece Yarısı Kargosu",
+    "content": "<b>Olay:</b> Şüpheli paket patlamadan son anda imha edildi. Gönderici adı sahteydi.",
+    "suspects": [
+      {
+        "text": "📦 1. Eski İş Ortağı",
+        "correct": true
+      },
+      {
+        "text": "📮 2. Kurye Çalışanı",
+        "correct": false
+      },
+      {
+        "text": "🏢 3. Bina Yöneticisi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #25: Şifreli Günlük",
+    "content": "<b>Olay:</b> Tarihi günce, simgelerle doluydu ve çözülemiyordu.",
+    "suspects": [
+      {
+        "text": "🔍 1. Kriptoloji Uzmanı Dedektif",
+        "correct": true
+      },
+      {
+        "text": "📖 2. Kütüphaneci",
+        "correct": false
+      },
+      {
+        "text": "🖋️ 3. Mürekkepçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #26: Kayıp Elmas Kolye",
+    "content": "<b>Olay:</b> Düğün salonunda gelinin boynundaki kolye ortadan kayboldu.",
+    "suspects": [
+      {
+        "text": "💍 1. Düğün Fotoğrafçısı (Objektifle alan)",
+        "correct": true
+      },
+      {
+        "text": "🤵 2. Damat",
+        "correct": false
+      },
+      {
+        "text": "🎻 3. Müzisyen",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #27: Akıllı Ev Sırrı",
+    "content": "<b>Olay:</b> Akıllı ev sistemi kilitlendi ve ev sahibi içeri giremedi.",
+    "suspects": [
+      {
+        "text": "💻 1. Eski Yazılım Mühendisi",
+        "correct": true
+      },
+      {
+        "text": "🔌 2. Elektrik Şirketi",
+        "correct": false
+      },
+      {
+        "text": "🤖 3. Robot Süpürge",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #28: Kilitli Oda Cinayeti",
+    "content": "<b>Olay:</b> İçeriden kilitli odada şüpheli ölüm. Pencerede parmaklıklar vardı.",
+    "suspects": [
+      {
+        "text": "❄️ 1. İntihar süsü veren zehirli buz iğnesi kullanan",
+        "correct": true
+      },
+      {
+        "text": "🚪 2. Ev Sahibi",
+        "correct": false
+      },
+      {
+        "text": "🩺 3. Doktor",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #29: Sualtı Kablosu",
+    "content": "<b>Olay:</b> İnternet altyapısını sağlayan sualtı kablosu kesildi.",
+    "suspects": [
+      {
+        "text": "🚢 1. Şüpheli Balıkçı Gemisi",
+        "correct": true
+      },
+      {
+        "text": "🦈 2. Köpekbalıkları",
+        "correct": false
+      },
+      {
+        "text": "🌊 3. Deprem",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #30: Sahte Para Operasyonu",
+    "content": "<b>Olay:</b> Piyasaya yüksek miktarda sahte banknot sürüldü.",
+    "suspects": [
+      {
+        "text": "🖨️ 1. Matbaa Sahibi",
+        "correct": true
+      },
+      {
+        "text": "🛒 2. Marketçi",
+        "correct": false
+      },
+      {
+        "text": "🏦 3. Banka Veznedarı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #31: Uçaktaki Mücevher",
+    "content": "<b>Olay:</b> Okyanus aşırı uçuşta çanta kayboldu.",
+    "suspects": [
+      {
+        "text": "🧳 1. Bagaj Görevlisi",
+        "correct": true
+      },
+      {
+        "text": "✈️ 2. Pilot",
+        "correct": false
+      },
+      {
+        "text": "💺 3. Yolcu",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #32: Geceyarısı Çanı",
+    "content": "<b>Olay:</b> Manastırda çalınmaması gereken çan gece çaldı.",
+    "suspects": [
+      {
+        "text": "🦉 1. Çana konan baykuş ve rüzgar",
+        "correct": true
+      },
+      {
+        "text": "⛪ 2. Keşiş",
+        "correct": false
+      },
+      {
+        "text": "🥷 3. Hırsız",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #33: Sır Veren Tablo",
+    "content": "<b>Olay:</b> Tablonun arkasındaki gizli bölme boş bulundu.",
+    "suspects": [
+      {
+        "text": "🧹 1. Evi Temizleyen Eski Çalışan",
+        "correct": true
+      },
+      {
+        "text": "🖼️ 2. Restoratör",
+        "correct": false
+      },
+      {
+        "text": "👑 3. Varis",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #34: İkizlerin Oyunu",
+    "content": "<b>Olay:</b> Suç mahkemesinde ikizler birbirinin suçunu üstlendi.",
+    "suspects": [
+      {
+        "text": "🧬 1. DNA testi ile gerçek katili bulan",
+        "correct": true
+      },
+      {
+        "text": "⚖️ 2. Hakim",
+        "correct": false
+      },
+      {
+        "text": "🛡️ 3. Avukat",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #35: Ormandaki Sinyal",
+    "content": "<b>Olay:</b> Dağda kaybolan kampçıdan telsiz sinyali alındı.",
+    "suspects": [
+      {
+        "text": "🌲 1. Arama Kurtarma Ekibi",
+        "correct": true
+      },
+      {
+        "text": "🐻 2. Vahşi Yaşam",
+        "correct": false
+      },
+      {
+        "text": "⛺ 3. Kampçı Arkadaşı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #36: Metro İstasyonu",
+    "content": "<b>Olay:</b> Metroda raylara düşen çanta saniyeler içinde alındı.",
+    "suspects": [
+      {
+        "text": "🎥 1. Güvenlik Kamerası Operatörü",
+        "correct": true
+      },
+      {
+        "text": "🚆 2. Makinist",
+        "correct": false
+      },
+      {
+        "text": "🎫 3. Gişe Memuru",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #37: Bahçıvanın Sırrı",
+    "content": "<b>Olay:</b> Malikanenin bahçesinde nadir çiçekler söküldü.",
+    "suspects": [
+      {
+        "text": "🌱 1. Rakip Bahçe Şirketi",
+        "correct": true
+      },
+      {
+        "text": "🏡 2. Ev Sahibi",
+        "correct": false
+      },
+      {
+        "text": "🐕 3. Köpek",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #38: Antik Kitap",
+    "content": "<b>Olay:</b> Sahaf dükkanından 500 yıllık kitap çalındı.",
+    "suspects": [
+      {
+        "text": "📜 1. Koleksiyoncu Müşteri",
+        "correct": true
+      },
+      {
+        "text": "📖 2. Sahaf Çırağı",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #39: Gizli Laboratuvar",
+    "content": "<b>Olay:</b> Orman içinde kaçak kimya atölyesi bulundu.",
+    "suspects": [
+      {
+        "text": "🧪 1. Kaçak İlaç Üreticileri",
+        "correct": true
+      },
+      {
+        "text": "🌲 2. Ormancı",
+        "correct": false
+      },
+      {
+        "text": "🏕️ 3. Kampçılar",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #40: Şifreli Mektup",
+    "content": "<b>Olay:</b> PTT'de kaybolan mektup yıllar sonra ortaya çıktı.",
+    "suspects": [
+      {
+        "text": "📮 1. Eski Posta Memuru",
+        "correct": true
+      },
+      {
+        "text": "🏛️ 2. Arşivci",
+        "correct": false
+      },
+      {
+        "text": "🕵️ 3. Dedektif",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #41: Gemi Kazası",
+    "content": "<b>Olay:</b> Sisli havada karaya oturan yük gemisi.",
+    "suspects": [
+      {
+        "text": "⚓ 1. Arızalı Radar Sistemi",
+        "correct": true
+      },
+      {
+        "text": "🧑‍✈️ 2. Kaptan",
+        "correct": false
+      },
+      {
+        "text": "🌊 3. Dalgalar",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #42: Çatıdaki Kedi",
+    "content": "<b>Olay:</b> Çatıdaki kedi kurtarılırken hırsızlık şüphelisi yakalandı.",
+    "suspects": [
+      {
+        "text": "🐈 1. Kediyi Takip Eden Polis",
+        "correct": true
+      },
+      {
+        "text": "🏠 2. Çatı Katı Sakini",
+        "correct": false
+      },
+      {
+        "text": "🚒 3. İtfaiyeci",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #43: Akıllı Saat Verisi",
+    "content": "<b>Olay:</b> Maktulün cinayet saatindeki nabzı gerçeği ortaya çıkardı.",
+    "suspects": [
+      {
+        "text": "⌚ 1. Saatin Konum ve Nabız Verisi",
+        "correct": true
+      },
+      {
+        "text": "📱 2. Telefon",
+        "correct": false
+      },
+      {
+        "text": "💻 3. Bilgisayar",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #44: Antika Vazo",
+    "content": "<b>Olay:</b> Müzayede salonunda paha biçilemez vazo kırıldı.",
+    "suspects": [
+      {
+        "text": "🔨 1. Açık Artırma Katılımcısı (Kasıtlı düşüren)",
+        "correct": true
+      },
+      {
+        "text": "🧹 2. Temizlikçi",
+        "correct": false
+      },
+      {
+        "text": "🛡️ 3. Güvenlik",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #45: Sahipsiz Valiz",
+    "content": "<b>Olay:</b> Havalimanında unutulan valizde para bulundu.",
+    "suspects": [
+      {
+        "text": "💰 1. Kaçakçı Kurye",
+        "correct": true
+      },
+      {
+        "text": "✈️ 2. Yolcu",
+        "correct": false
+      },
+      {
+        "text": "🛃 3. Gümrük Memuru",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #46: Gece Yarısı Işıkları",
+    "content": "<b>Olay:</b> Boş olması gereken fabrikada ışıklar yandı.",
+    "suspects": [
+      {
+        "text": "⚡ 1. Kaçak Bitcoin Madencileri",
+        "correct": true
+      },
+      {
+        "text": "🏭 2. Fabrika Sahibi",
+        "correct": false
+      },
+      {
+        "text": "🌙 3. Bekçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #47: Sessiz Tanık",
+    "content": "<b>Olay:</b> Evdeki papağan cinayeti ele verdi.",
+    "suspects": [
+      {
+        "text": "🦜 1. Katilin adını tekrarlayan papağan",
+        "correct": true
+      },
+      {
+        "text": "🐕 2. Köpek",
+        "correct": false
+      },
+      {
+        "text": "🐈 3. Kedi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #48: Kırmızı İpucu",
+    "content": "<b>Olay:</b> Olay yerinde bulunan kırmızı atkı katili ele verdi.",
+    "suspects": [
+      {
+        "text": "🧣 1. Kurbanın Komşusu",
+        "correct": true
+      },
+      {
+        "text": "🚶 2. Yoldan Geçen",
+        "correct": false
+      },
+      {
+        "text": "📮 3. Postacı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #49: Gizli Bölme",
+    "content": "<b>Olay:</b> Eski masanın çekmecesindeki gizli bölme açıldı.",
+    "suspects": [
+      {
+        "text": "🪑 1. Antikacı",
+        "correct": true
+      },
+      {
+        "text": "🧹 2. Temizlikçi",
+        "correct": false
+      },
+      {
+        "text": "🪵 3. Marangoz",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #50: Kırık Cam",
+    "content": "<b>Olay:</b> Dükkanın camı dışarıdan kırıldı ama içeriden hiçbir şey alınmadı.",
+    "suspects": [
+      {
+        "text": "🪨 1. Çocukların attığı taş",
+        "correct": true
+      },
+      {
+        "text": "🥷 2. Profesyonel Hırsız",
+        "correct": false
+      },
+      {
+        "text": "🐕 3. Sokak Köpeği",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #51: Sır Perdesi",
+    "content": "<b>Olay:</b> Perdeleri hiç açılmayan evde şulyeli olay.",
+    "suspects": [
+      {
+        "text": "🕵️ 1. Gizli ajan",
+        "correct": true
+      },
+      {
+        "text": "👵 2. Yaşlı Teyze",
+        "correct": false
+      },
+      {
+        "text": "🐈 3. Kedi Besleyicisi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #52: Saat Kulesi",
+    "content": "<b>Olay:</b> Şehrin merkezindeki saat kulesi gece yarısı durdu.",
+    "suspects": [
+      {
+        "text": "⚙️ 1. Dişlilere sıkışan kuş",
+        "correct": true
+      },
+      {
+        "text": "⏰ 2. Saatçi",
+        "correct": false
+      },
+      {
+        "text": "🔨 3. Sabotajcı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #53: Yol Kenarı",
+    "content": "<b>Olay:</b> Otobanda terk edilmiş lüks araç bulundu.",
+    "suspects": [
+      {
+        "text": "⛽ 1. Yakıtı biten sürücü",
+        "correct": true
+      },
+      {
+        "text": "🚗 2. Hırsız",
+        "correct": false
+      },
+      {
+        "text": "🚓 3. Polis",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #54: Kütüphane Kitabı",
+    "content": "<b>Olay:</b> 50 yıldır okunmayan kitabın arasında değerli pul bulundu.",
+    "suspects": [
+      {
+        "text": "📚 1. Meraklı Öğrenci",
+        "correct": true
+      },
+      {
+        "text": "👴 2. Kütüphaneci",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #55: Göl Kenarı",
+    "content": "<b>Olay:</b> Göl kenarında oltaya takılan çanta.",
+    "suspects": [
+      {
+        "text": "🎣 1. Amatör Balıkçı",
+        "correct": true
+      },
+      {
+        "text": "🦆 2. Avcı",
+        "correct": false
+      },
+      {
+        "text": "⛵ 3. Kayıkçı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #56: Saklı Hazine",
+    "content": "<b>Olay:</b> Eski evin bahçesinde altınküpü bulundu.",
+    "suspects": [
+      {
+        "text": "⛏️ 1. Evin Eski Sahibinin Torunu",
+        "correct": true
+      },
+      {
+        "text": "🏠 2. Yeni Ev Sahibi",
+        "correct": false
+      },
+      {
+        "text": "🌱 3. Bahçıvan",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #57: Kırmızı Gül",
+    "content": "<b>Olay:</b> Masanın üzerindeki zehirli gül kurbana sunuldu.",
+    "suspects": [
+      {
+        "text": "🌹 1. Gizli Hayran kılığındaki rakip",
+        "correct": true
+      },
+      {
+        "text": "🤵 2. Garson",
+        "correct": false
+      },
+      {
+        "text": "💐 3. Çiçekçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #58: Çatı Katı",
+    "content": "<b>Olay:</b> Çatı katından gelen garip sesler komşuları ürküttü.",
+    "suspects": [
+      {
+        "text": "🦉 1. Çatıya yuva yapan baykuşlar",
+        "correct": true
+      },
+      {
+        "text": "👻 2. Hayalet",
+        "correct": false
+      },
+      {
+        "text": "🥷 3. Hırsız",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #59: Antika Tabanca",
+    "content": "<b>Olay:</b> Koleksiyonerin sergisindeki silah sergilendiği yerden kayboldu.",
+    "suspects": [
+      {
+        "text": "🎯 1. Sergi Görevlisi",
+        "correct": true
+      },
+      {
+        "text": "👥 2. Ziyaretçi",
+        "correct": false
+      },
+      {
+        "text": "🛡️ 3. Güvenlik",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #60: Dijital İz",
+    "content": "<b>Olay:</b> Sorsan silindi denilen mesajlar kurtarıldı.",
+    "suspects": [
+      {
+        "text": "💻 1. Adli Bilişim Uzmanı",
+        "correct": true
+      },
+      {
+        "text": "📱 2. Telefon Tamircisi",
+        "correct": false
+      },
+      {
+        "text": "🕵️ 3. Hacker",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #61: Gece Yarısı Kargosu",
+    "content": "<b>Olay:</b> Yanlış adrese teslim edilen kargo büyük bir sırrı açığa çıkardı.",
+    "suspects": [
+      {
+        "text": "📦 1. Komşu",
+        "correct": true
+      },
+      {
+        "text": "📮 2. Kurye",
+        "correct": false
+      },
+      {
+        "text": "🏢 3. Şirket Müdürü",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #62: Kuyumcu Soygunu",
+    "content": "<b>Olay:</b> Alarm çalmadan duvardan delik açılarak soyuldu.",
+    "suspects": [
+      {
+        "text": "🧱 1. Profesyonel Duvar Delici Çete",
+        "correct": true
+      },
+      {
+        "text": "💎 2. Kuyumcu",
+        "correct": false
+      },
+      {
+        "text": "🚓 3. Bekçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #63: Sirk Sırrı",
+    "content": "<b>Olay:</b> Sihirbazın şov sırasında kaybolma numarası gerçek oldu.",
+    "suspects": [
+      {
+        "text": "🪄 1. Asistanı (Kıskançlıktan)",
+        "correct": true
+      },
+      {
+        "text": "🎪 2. Sirk Direktörü",
+        "correct": false
+      },
+      {
+        "text": "🤡 3. Palyaço",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #64: Dağ Evi",
+    "content": "<b>Olay:</b> Karlarla kaplı dağ evinde mahsur kalanlar yardım bekliyor.",
+    "suspects": [
+      {
+        "text": "🚁 1. Pilot",
+        "correct": true
+      },
+      {
+        "text": "⛷️ 2. Kayakçı",
+        "correct": false
+      },
+      {
+        "text": "🐺 3. Avcı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #65: Eski Liman",
+    "content": "<b>Olay:</b> Limandaki terk edilmiş konteynerde kaçak mallar bulundu.",
+    "suspects": [
+      {
+        "text": "📦 1. Uluslararası Kaçakçılar",
+        "correct": true
+      },
+      {
+        "text": "⚓ 2. Gümrük Memuru",
+        "correct": false
+      },
+      {
+        "text": "🚢 3. Gemi Kaptanı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #66: Sanal Bahis",
+    "content": "<b>Olay:</b> Yasadışı bahis çetesinin sunucusu çöktü.",
+    "suspects": [
+      {
+        "text": "💻 1. Siber Polis Ekibi",
+        "correct": true
+      },
+      {
+        "text": "💸 2. Oyuncu",
+        "correct": false
+      },
+      {
+        "text": "🏦 3. Banka",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #67: Park Eden Araba",
+    "content": "<b>Olay:</b> 3 yıldır aynı yerde duran arabanın bagajından sürpriz çıktı.",
+    "suspects": [
+      {
+        "text": "🚗 1. Kayıp Şahıs",
+        "correct": true
+      },
+      {
+        "text": "🅿️ 2. Otoparkçı",
+        "correct": false
+      },
+      {
+        "text": "🚓 3. Çekici",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #68: Geciken Tren",
+    "content": "<b>Olay:</b> Raylardaki engelleme nedeniyle tren durmak zorunda kaldı.",
+    "suspects": [
+      {
+        "text": "🛤️ 1. Raylara kaya düşmesi",
+        "correct": true
+      },
+      {
+        "text": "🚂 2. Makinist",
+        "correct": false
+      },
+      {
+        "text": "🎫 3. Yolcu",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #69: Antika Halı",
+    "content": "<b>Olay:</b> Saray halısının üzerindeki desenin anlamı çözüldü.",
+    "suspects": [
+      {
+        "text": "🧶 1. Tarihçi Uzman",
+        "correct": true
+      },
+      {
+        "text": "🧹 2. Temizlikçi",
+        "correct": false
+      },
+      {
+        "text": "👑 3. Saray Rehberi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #70: Gizli Tünel",
+    "content": "<b>Olay:</b> Eski konağın bodrumunda bankaya çıkan tünel bulundu.",
+    "suspects": [
+      {
+        "text": "🏦 1. Soyguncu Ev Sahipleri",
+        "correct": true
+      },
+      {
+        "text": "🏛️ 2. Müze",
+        "correct": false
+      },
+      {
+        "text": "👷 3. İnşaatçı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #71: Kırık Kalem",
+    "content": "<b>Olay:</b> Olay yerinde bulunan kırık dolma kalem katile ulaştırdı.",
+    "suspects": [
+      {
+        "text": "✒️ 1. Şirket Avukatı",
+        "correct": true
+      },
+      {
+        "text": "👦 2. Öğrenci",
+        "correct": false
+      },
+      {
+        "text": "✍️ 3. Yazar",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #72: Gece Uçuşu",
+    "content": "<b>Olay:</b> Radarsatan kaçak uçak iniş yaptı.",
+    "suspects": [
+      {
+        "text": "🛩️ 1. Kaçakçılık Pilotu",
+        "correct": true
+      },
+      {
+        "text": "📡 2. Kule Görevlisi",
+        "correct": false
+      },
+      {
+        "text": "👮 3. Polis",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #73: Sahildeki Şişe",
+    "content": "<b>Olay:</b> İçinde yardım mesajı olan şişe kıyıya vurdu.",
+    "suspects": [
+      {
+        "text": "📜 1. Yıllar Önce Kaybolan Denizci",
+        "correct": true
+      },
+      {
+        "text": "🌊 2. Çocuklar",
+        "correct": false
+      },
+      {
+        "text": "🏖️ 3. Sahil Güvenlik",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #74: Kilitli Sandık",
+    "content": "<b>Olay:</b> Çatı katında bulunan demir sandık açılamıyordu.",
+    "suspects": [
+      {
+        "text": "🔑 1. Çilingir",
+        "correct": true
+      },
+      {
+        "text": "🧹 2. Temizlikçi",
+        "correct": false
+      },
+      {
+        "text": "🧒 3. Çocuk",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #75: Gizemli Telefon",
+    "content": "<b>Olay:</b> Gece yarısı çalan ama açılmayan telefon.",
+    "suspects": [
+      {
+        "text": "📱 1. Yanlış Numara",
+        "correct": true
+      },
+      {
+        "text": "🕵️ 2. Katil",
+        "correct": false
+      },
+      {
+        "text": "👻 3. Hayalet",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #76: Kırmızı Dosya",
+    "content": "<b>Olay:</b> Masadan çalınan gizli devlet dosyası.",
+    "suspects": [
+      {
+        "text": "📂 1. Çift Taraflı Ajan",
+        "correct": true
+      },
+      {
+        "text": "📋 2. Sekreter",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #77: Orman Yangını",
+    "content": "<b>Olay:</b> Kasıtlı çıkarıldığı anlaşılan orman yangını.",
+    "suspects": [
+      {
+        "text": "🔥 1. Arsa Açmak İsteyen Müteahhit",
+        "correct": true
+      },
+      {
+        "text": "🌲 2. Kampçı",
+        "correct": false
+      },
+      {
+        "text": "🌳 3. Çiftçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #78: Saat Tamircisi",
+    "content": "<b>Olay:</b> Tamir için verilen antika saatin içindeki elmas değiştirildi.",
+    "suspects": [
+      {
+        "text": "⏰ 1. Sahtekar Saat Tamircisi",
+        "correct": true
+      },
+      {
+        "text": "💎 2. Sahibi",
+        "correct": false
+      },
+      {
+        "text": "📦 3. Kurye",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #79: Kışla Sırrı",
+    "content": "<b>Olay:</b> Askeri kışlada erzak deposu soyuldu.",
+    "suspects": [
+      {
+        "text": "🪖 1. Nöbeti Eken Asker",
+        "correct": true
+      },
+      {
+        "text": "👮 2. Komutan",
+        "correct": false
+      },
+      {
+        "text": "🍲 3. Aşçı",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #80: Sahne Arkası",
+    "content": "<b>Olay:</b> Konser öncesi solistin sesi kısılmaya çalışıldı.",
+    "suspects": [
+      {
+        "text": "🎤 1. Rakip Sanatçı",
+        "correct": true
+      },
+      {
+        "text": "🎧 2. Ses Teknisyeni",
+        "correct": false
+      },
+      {
+        "text": "🎸 3. Gitarist",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #81: Kuyu Sırrı",
+    "content": "<b>Olay:</b> Köy meydanındaki eski kuyuya atılan çanta bulundu.",
+    "suspects": [
+      {
+        "text": "🪣 1. Köyün Muhtarı",
+        "correct": true
+      },
+      {
+        "text": "🧑‍🌾 2. Çiftçi",
+        "correct": false
+      },
+      {
+        "text": "🧒 3. Çocuklar",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #82: Gizli Kamera",
+    "content": "<b>Olay:</b> Soyunma odasında gizli kamera bulundu.",
+    "suspects": [
+      {
+        "text": "📷 1. Tesis Müdürü",
+        "correct": true
+      },
+      {
+        "text": "🧹 2. Temizlikçi",
+        "correct": false
+      },
+      {
+        "text": "🏃 3. Sporcu",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #83: Antika Kılıç",
+    "content": "<b>Olay:</b> Vitrini keserek çalınan samuray kılıcı.",
+    "suspects": [
+      {
+        "text": "⚔️ 1. Antika Kaçakçısı",
+        "correct": true
+      },
+      {
+        "text": "🏛️ 2. Müze Müdürü",
+        "correct": false
+      },
+      {
+        "text": "🛡️ 3. Güvenlik",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #84: Kırık Çerçeve",
+    "content": "<b>Olay:</b> Yere düşen aile fotoğrafının arkasından vasiyetname çıktı.",
+    "suspects": [
+      {
+        "text": "🖼️ 1. Torun",
+        "correct": true
+      },
+      {
+        "text": "🧹 2. Temizlikçi",
+        "correct": false
+      },
+      {
+        "text": "🔨 3. Marangoz",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #85: Sahipsiz Paket",
+    "content": "<b>Olay:</b> Metro istasyonunda unutulan paket panik yarattı.",
+    "suspects": [
+      {
+        "text": "🎒 1. Unutkan Yolcu",
+        "correct": true
+      },
+      {
+        "text": "💣 2. Sabotajcı",
+        "correct": false
+      },
+      {
+        "text": "👮 3. Polis",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #86: Gece Yarısı Ziyaretçisi",
+    "content": "<b>Olay:</b> Kameralara yansıyan ama yüzü görünmeyen şahıs.",
+    "suspects": [
+      {
+        "text": "🥷 1. Maskeli Hırsız",
+        "correct": true
+      },
+      {
+        "text": "👻 2. Hayalet",
+        "correct": false
+      },
+      {
+        "text": "🐕 3. Köpek",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #87: Kriptolu Mesaj",
+    "content": "<b>Olay:</b> Casus filmindeki gibi şifreli radyo yayını.",
+    "suspects": [
+      {
+        "text": "📻 1. Yabancı İstihbarat Ajanı",
+        "correct": true
+      },
+      {
+        "text": "🎙️ 2. Radyo Programcısı",
+        "correct": false
+      },
+      {
+        "text": "📡 3. Amatör Telsizci",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #88: Saray Sırrı",
+    "content": "<b>Olay:</b> Tarihi sarayın paha biçilemez taç kopyalandı.",
+    "suspects": [
+      {
+        "text": "👑 1. Saray Restoratörü",
+        "correct": true
+      },
+      {
+        "text": "🏛️ 2. Rehber",
+        "correct": false
+      },
+      {
+        "text": "🛡️ 3. Muhafız",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #89: Kanyon Yolcusu",
+    "content": "<b>Olay:</b> Kanyonda mahsur kalan turist kurtarıldı.",
+    "suspects": [
+      {
+        "text": "🚁 1. Arama Kurtarma Helikopteri",
+        "correct": true
+      },
+      {
+        "text": "🦅 2. Doğa Fotoğrafçısı",
+        "correct": false
+      },
+      {
+        "text": "🥾 3. Diğer Turist",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #90: Sessiz Ev",
+    "content": "<b>Olay:</b> Haftalardır evinden çıkmayan kişinin sırrı.",
+    "suspects": [
+      {
+        "text": "💻 1. Evden Çalışan Yazılımcı",
+        "correct": true
+      },
+      {
+        "text": "🕵️ 2. Gizli Ajan",
+        "correct": false
+      },
+      {
+        "text": "📦 3. Kurye",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #91: Kırık Vitrin",
+    "content": "<b>Olay:</b> Kuyumcu vitrininden çalınan tek taş yüzük.",
+    "suspects": [
+      {
+        "text": "🔨 1. Tuğla Atıp Kaçan Hırsız",
+        "correct": true
+      },
+      {
+        "text": "💎 2. Kuyumcu",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #92: Gece Treni",
+    "content": "<b>Olay:</b> Ekspres trende kaybolan çanta bulundu.",
+    "suspects": [
+      {
+        "text": "🧳 1. Vagonda Unutan Yolcu",
+        "correct": true
+      },
+      {
+        "text": "🚂 2. Kondüktör",
+        "correct": false
+      },
+      {
+        "text": "☕ 3. Büfeci",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #93: Antika Çini",
+    "content": "<b>Olay:</b> Müzeden çalınan İznik çinisi karakolda bulundu.",
+    "suspects": [
+      {
+        "text": "🏺 1. Antika Kaçakçısı",
+        "correct": true
+      },
+      {
+        "text": "🏛️ 2. Müze Müdürü",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #94: Sahildeki İz",
+    "content": "<b>Olay:</b> Kumsalda şüpheli ayak izleri.",
+    "suspects": [
+      {
+        "text": "👣 1. Kaçak Avcılar",
+        "correct": true
+      },
+      {
+        "text": "🐕 2. Köpek",
+        "correct": false
+      },
+      {
+        "text": "🏖️ 3. Tatilci",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #95: Gizli Hesap",
+    "content": "<b>Olay:</b> Şirket hesaplarında milyonlarca liralık açık.",
+    "suspects": [
+      {
+        "text": "📊 1. Baş Muhasebeci",
+        "correct": true
+      },
+      {
+        "text": "💻 2. Bilgi İşlem",
+        "correct": false
+      },
+      {
+        "text": "🏢 3. Patron",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #96: Kilitli Kapı",
+    "content": "<b>Olay:</b> Odada mahsur kalan profesörün anahtarı kayıp.",
+    "suspects": [
+      {
+        "text": "🔑 1. Kapıyı Dışarıdan Kilitleyen Asistan",
+        "correct": true
+      },
+      {
+        "text": "🚪 2. Profesör",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #97: Kırmızı Ferrari",
+    "content": "<b>Olay:</b> Aşırı hızla giden spor araba kameralara yakalandı.",
+    "suspects": [
+      {
+        "text": "🏎️ 1. Şirket Sahibinin Şımarık Oğlu",
+        "correct": true
+      },
+      {
+        "text": "🅿️ 2. Otoparkçı",
+        "correct": false
+      },
+      {
+        "text": "🚓 3. Polis",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #98: Gizemli Kutu",
+    "content": "<b>Olay:</b> Kargo şirketine bırakılan sahte kimlikli paket.",
+    "suspects": [
+      {
+        "text": "📦 1. Uluslararası Dolandırıcı",
+        "correct": true
+      },
+      {
+        "text": "📮 2. Kurye",
+        "correct": false
+      },
+      {
+        "text": "🏢 3. Şube Müdürü",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #99: Antika Piyano",
+    "content": "<b>Olay:</b> Konservatuvardaki piyanonun telinden ses gelmiyor.",
+    "suspects": [
+      {
+        "text": "🎹 1. Rakip Müzisyen",
+        "correct": true
+      },
+      {
+        "text": "🎶 2. Piyano Akortçusu",
+        "correct": false
+      },
+      {
+        "text": "🧹 3. Temizlikçi",
+        "correct": false
+      }
+    ]
+  },
+  {
+    "title": "🕵️ VAKA #100: Büyük Dedektif",
+    "content": "<b>Olay:</b> 100 gizemli vakayı başarıyla çözen dedektif büyük ödülü kazandı!<br><br><b>İpucu:</b> Bu son vakada tüm ipuçlarını doğru bir şekilde birleştiren kişi kim?",
+    "suspects": [
+      {
+        "text": "🕵️ 1. Levent (Büyük Dedektif)",
+        "correct": true
+      },
+      {
+        "text": "🤖 2. Yardımcı Yapay Zeka",
+        "correct": false
+      },
+      {
+        "text": "👥 3. Şüpheliler",
+        "correct": false
+      }
+    ]
+  }
+]
