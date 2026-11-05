@@ -42,16 +42,16 @@
     "content": "<b>Olay:</b> Bir malikânede gece mücevher kutusu çalındı. Sabah bahçede karın üzerinde ayak izleri vardı.<br><br><b>İpucu 1:</b> Kar gece ondan önce durmuş. Bahçedeki izlerin hepsi evden dışarı gidiyor. Dışarıdan eve giren tek bir iz yok.<br><br><b>İpucu 2:</b> İzler kırk iki numara bir ayakkabıya ait. Hizmetçi Nermin otuz yedi numara giyiyor. Evde kalan yeğen Cem ise kırk iki numara.",
     "suspects": [
       {
-        "text": "A. Cem (evde kalan yeğen)",
+        "text": "A. Ferit (komşu)",
+        "correct": false
+      },
+      {
+        "text": "B. Nermin (hizmetçi)",
+        "correct": false
+      },
+      {
+        "text": "C. Cem (evde kalan yeğen)",
         "correct": true
-      },
-      {
-        "text": "B. Ferit (komşu)",
-        "correct": false
-      },
-      {
-        "text": "C. Nermin (hizmetçi)",
-        "correct": false
       }
     ],
     "cozum": "İzler yalnızca dışarı çıkıyordu, yani hırsız zaten evdeydi. Kırk iki numara ayak Nermin'e uymuyordu. Hırsız yeğen Cem'di."
@@ -80,12 +80,12 @@
     "content": "<b>Olay:</b> Okulda, müdürün kilitli çekmecesindeki sınav sorularının fotoğrafı çekildi. Fotoğrafın tarihi, bir pazar günü öğleden sonra.<br><br><b>İpucu 1:</b> Pazar günleri okul kapalıdır. Giriş kartı kayıtlarına göre, o pazar okula yalnızca bir kişi girmiş.<br><br><b>İpucu 2:</b> Öğretmen Sevgi o hafta sonu şehir dışındaydı. Müdür yardımcısı Orhan tatildeydi. Bekçi Kadir'in elinde ise bütün odaların yedek anahtarı var.",
     "suspects": [
       {
-        "text": "A. Sevgi (öğretmen)",
-        "correct": false
+        "text": "A. Kadir (bekçi)",
+        "correct": true
       },
       {
-        "text": "B. Kadir (bekçi)",
-        "correct": true
+        "text": "B. Sevgi (öğretmen)",
+        "correct": false
       },
       {
         "text": "C. Orhan (müdür yardımcısı)",
@@ -99,16 +99,16 @@
     "content": "<b>Olay:</b> Kuyumcunun vitrini kırılıp bir yüzük alındı. Camdaki kırılma izi çok net.<br><br><b>İpucu 1:</b> Cam, sol taraftan vurularak kırılmış. Uzmanlara göre bu vuruşu ancak solak biri yapabilir.<br><br><b>İpucu 2:</b> Üç şüpheli çay içerken izlendi. Taner bardağı sağ elle tuttu. Pınar sol elle tuttu. Oya sağ elle tuttu.",
     "suspects": [
       {
-        "text": "A. Pınar (kasiyer)",
+        "text": "A. Taner (tamirci)",
+        "correct": false
+      },
+      {
+        "text": "B. Oya (komşu)",
+        "correct": false
+      },
+      {
+        "text": "C. Pınar (kasiyer)",
         "correct": true
-      },
-      {
-        "text": "B. Taner (tamirci)",
-        "correct": false
-      },
-      {
-        "text": "C. Oya (komşu)",
-        "correct": false
       }
     ],
     "cozum": "Vuruş izi solak birine aitti. Çay içerken yalnızca Pınar bardağı sol eliyle tuttu."
@@ -156,16 +156,16 @@
     "content": "<b>Olay:</b> Bir evden üzeri kapalı bir paket çalındı. İçinde ne olduğunu yalnızca gönderen ve ev sahibi biliyordu. Polis bunu kimseye söylememişti.<br><br><b>İpucu 1:</b> Komşular ifade verdi. Ayşe, paketin kaybolmasına üzüldüğünü söyledi. Nihat, paketin değerini merak etti.<br><br><b>İpucu 2:</b> Cemal ise şöyle dedi: yazık, o mavi cep saati çok güzeldi.",
     "suspects": [
       {
-        "text": "A. Cemal (komşu)",
+        "text": "A. Ayşe (komşu)",
+        "correct": false
+      },
+      {
+        "text": "B. Nihat (komşu)",
+        "correct": false
+      },
+      {
+        "text": "C. Cemal (komşu)",
         "correct": true
-      },
-      {
-        "text": "B. Ayşe (komşu)",
-        "correct": false
-      },
-      {
-        "text": "C. Nihat (komşu)",
-        "correct": false
       }
     ],
     "cozum": "Paketin içindekini yalnızca hırsız bilebilirdi. Cemal, mavi cep saatini ağzından kaçırdı."
@@ -213,16 +213,16 @@
     "content": "<b>Olay:</b> Gece yarısı bir kuaförden pahalı bir saç kurutma makinesi çalındı. Kapı kolunda ağır bir lavanta kokusu kalmıştı.<br><br><b>İpucu 1:</b> Koku lavanta kolonyasından geliyor. Mahallede bu kolonyayı kullanan tek kişi var.<br><br><b>İpucu 2:</b> Kuaför çırağı Sevil'in elleri sabun kokuyor. Çaycı Hasan hiç koku sürmez. Terzi Fikret ise her gün lavanta kolonyası kullanıyor.",
     "suspects": [
       {
-        "text": "A. Fikret (terzi)",
+        "text": "A. Sevil (kuaför çırağı)",
+        "correct": false
+      },
+      {
+        "text": "B. Hasan (çaycı)",
+        "correct": false
+      },
+      {
+        "text": "C. Fikret (terzi)",
         "correct": true
-      },
-      {
-        "text": "B. Sevil (kuaför çırağı)",
-        "correct": false
-      },
-      {
-        "text": "C. Hasan (çaycı)",
-        "correct": false
       }
     ],
     "cozum": "Kapı kolundaki lavanta kokusu, her gün lavanta kolonyası süren terzi Fikret'e aitti."
@@ -251,12 +251,12 @@
     "content": "<b>Olay:</b> Bir ofiste gece, kilitli çekmeceden müşteri listesi çalındı. Çekmecede zorlama izi yok.<br><br><b>İpucu 1:</b> Çekmeceyi açan anahtar, sekreter Nur'un anahtarıydı. Müdür Alper'in anahtarı kendi cebinde duruyordu.<br><br><b>İpucu 2:</b> Müdür Alper o gece yurt dışındaydı. Muhasebeci Tolga'nın hiç anahtarı yok. Nur ise o gece ofisteydi.",
     "suspects": [
       {
-        "text": "A. Tolga (muhasebeci)",
-        "correct": false
+        "text": "A. Nur (sekreter)",
+        "correct": true
       },
       {
-        "text": "B. Nur (sekreter)",
-        "correct": true
+        "text": "B. Tolga (muhasebeci)",
+        "correct": false
       },
       {
         "text": "C. Alper (müdür)",
@@ -270,16 +270,16 @@
     "content": "<b>Olay:</b> Bir çiftlikte ahır kapısı açık kalıp atlar kaçtı. Bekçi Salih, sabaha kadar ahırın önünde nöbet tuttuğunu söylüyor.<br><br><b>İpucu 1:</b> Gece ikiden beşe kadar çok şiddetli yağmur yağdı. Ahırın önü açık alan, üstü örtülü değil.<br><br><b>İpucu 2:</b> Sabah Salih'in ceketi ve çizmesi kupkuru. Aşçı Mine ile seyis Yusuf'un odaları ahırdan uzak.",
     "suspects": [
       {
-        "text": "A. Salih (bekçi)",
+        "text": "A. Mine (aşçı)",
+        "correct": false
+      },
+      {
+        "text": "B. Yusuf (seyis)",
+        "correct": false
+      },
+      {
+        "text": "C. Salih (bekçi)",
         "correct": true
-      },
-      {
-        "text": "B. Mine (aşçı)",
-        "correct": false
-      },
-      {
-        "text": "C. Yusuf (seyis)",
-        "correct": false
       }
     ],
     "cozum": "Açık alanda bütün gece yağmur altında nöbet tutan biri ıslanırdı. Salih'in kupkuru çıkması, orada olmadığını gösteriyor."
@@ -289,12 +289,12 @@
     "content": "<b>Olay:</b> Bir apartmanın sekizinci katındaki daireden bilgisayar çalındı. O gece asansör bozuktu ve ancak sabah altıda onarıldı.<br><br><b>İpucu 1:</b> Kiracı Burcu, gece asansörle çıktığını söyledi. Emekli Kemal, bacağı ağrıdığı için dışarı çıkmadığını söyledi.<br><br><b>İpucu 2:</b> Kurye Tuna ise ifadesinde, sabah yedide asansörle çıkıp paketi bıraktığını söyledi.",
     "suspects": [
       {
-        "text": "A. Burcu (kiracı)",
-        "correct": true
+        "text": "A. Kemal (emekli)",
+        "correct": false
       },
       {
-        "text": "B. Kemal (emekli)",
-        "correct": false
+        "text": "B. Burcu (kiracı)",
+        "correct": true
       },
       {
         "text": "C. Tuna (kurye)",
@@ -308,12 +308,12 @@
     "content": "<b>Olay:</b> Okulda bir cam kırıldı. Üç öğrenciden yalnızca biri doğruyu söylüyor.<br><br><b>İpucu 1:</b> Tarkan, camı Cem'in kırdığını söyledi. Cem, camı kırmadığını söyledi.<br><br><b>İpucu 2:</b> Deniz ise Tarkan'ın yalan söylediğini söyledi. Üç ifadeden yalnızca biri doğru.",
     "suspects": [
       {
-        "text": "A. Tarkan (öğrenci)",
-        "correct": false
+        "text": "A. Cem (öğrenci)",
+        "correct": true
       },
       {
-        "text": "B. Cem (öğrenci)",
-        "correct": true
+        "text": "B. Tarkan (öğrenci)",
+        "correct": false
       },
       {
         "text": "C. Deniz (öğrenci)",
@@ -331,12 +331,12 @@
         "correct": false
       },
       {
-        "text": "B. Orhan (depocu)",
-        "correct": true
+        "text": "B. Sevim (kasiyer)",
+        "correct": false
       },
       {
-        "text": "C. Sevim (kasiyer)",
-        "correct": false
+        "text": "C. Orhan (depocu)",
+        "correct": true
       }
     ],
     "cozum": "Rafa sandalyesiz ancak çok uzun biri uzanabilirdi. Boyu bir doksan sekiz olan Orhan'dı."
@@ -346,12 +346,12 @@
     "content": "<b>Olay:</b> Bir evden gece televizyon ve bilgisayar alındı. Ne kapı ne pencere zorlanmış.<br><br><b>İpucu 1:</b> Evin kapısı gece çift kilitli. Kilitler anahtarla açılmış.<br><br><b>İpucu 2:</b> Anahtarın üç kopyası var: ev sahibi Nezih'te, kızı Ceren'de ve eski kiracı Taylan'da. Nezih o gece hastanedeydi, Ceren yurt dışındaydı.",
     "suspects": [
       {
-        "text": "A. Taylan (eski kiracı)",
-        "correct": true
+        "text": "A. Nezih (ev sahibi)",
+        "correct": false
       },
       {
-        "text": "B. Nezih (ev sahibi)",
-        "correct": false
+        "text": "B. Taylan (eski kiracı)",
+        "correct": true
       },
       {
         "text": "C. Ceren (ev sahibinin kızı)",
@@ -365,12 +365,12 @@
     "content": "<b>Olay:</b> Fırında sabah altıyla yedi arasında kasadan para eksildi.<br><br><b>İpucu 1:</b> Kamera, altı buçukta arka kapıdan birinin girdiğini gösteriyor. Yüzü görünmüyor ama kırmızı bir bere takıyor.<br><br><b>İpucu 2:</b> Selçuk mavi bere takıyor. Ramazan hiç bere takmaz. Tayfun ise her gün kırmızı bere takıyor.",
     "suspects": [
       {
-        "text": "A. Selçuk (dağıtımcı)",
-        "correct": false
+        "text": "A. Tayfun (komşu)",
+        "correct": true
       },
       {
-        "text": "B. Tayfun (komşu)",
-        "correct": true
+        "text": "B. Selçuk (dağıtımcı)",
+        "correct": false
       },
       {
         "text": "C. Ramazan (simitçi)",
@@ -388,12 +388,12 @@
         "correct": false
       },
       {
-        "text": "B. Oğuz (komşu)",
-        "correct": true
+        "text": "B. Hakan (hemşire)",
+        "correct": false
       },
       {
-        "text": "C. Hakan (hemşire)",
-        "correct": false
+        "text": "C. Oğuz (komşu)",
+        "correct": true
       }
     ],
     "cozum": "Sinema on bir buçukta kapanmıştı, Oğuz'un alibisi yalandı. Duygu telefon kaydıyla, Hakan nöbetle aklandı."
@@ -403,12 +403,12 @@
     "content": "<b>Olay:</b> Bir mağazada kamera kayıtları sabaha karşı silindi. Kayıt cihazının şifresini bilen biri silmiş.<br><br><b>İpucu 1:</b> Şifreyi yalnızca güvenlik şefi Ümit ile müdür Selçuk biliyor. Cihaz, şifre ilk denemede doğru girilmiş.<br><br><b>İpucu 2:</b> Müdür Selçuk şifreyi her seferinde ilk denemede yanlış girer, herkes bunu bilir. Temizlikçi Kader'in şifreden haberi yok.",
     "suspects": [
       {
-        "text": "A. Ümit (güvenlik şefi)",
-        "correct": true
+        "text": "A. Selçuk (müdür)",
+        "correct": false
       },
       {
-        "text": "B. Selçuk (müdür)",
-        "correct": false
+        "text": "B. Ümit (güvenlik şefi)",
+        "correct": true
       },
       {
         "text": "C. Kader (temizlikçi)",
@@ -422,12 +422,12 @@
     "content": "<b>Olay:</b> Bir çiftlikten traktör aküsü çalındı. Ahırın önünde yalnızca bir motosiklet lastiği izi var.<br><br><b>İpucu 1:</b> İz geniş ve dişli. Bu lastikleri yalnızca arazi motosikletleri kullanıyor.<br><br><b>İpucu 2:</b> Çiftçi Rıza yalnızca traktör kullanıyor. Postacı Cüneyt ince lastikli bir scooter kullanıyor. Komşu Berk'in arazi motosikleti var.",
     "suspects": [
       {
-        "text": "A. Rıza (çiftçi)",
-        "correct": false
+        "text": "A. Berk (komşu)",
+        "correct": true
       },
       {
-        "text": "B. Berk (komşu)",
-        "correct": true
+        "text": "B. Rıza (çiftçi)",
+        "correct": false
       },
       {
         "text": "C. Cüneyt (postacı)",
@@ -441,16 +441,16 @@
     "content": "<b>Olay:</b> Bir kuyumcuda alarm hiç çalmadı. Alarm yalnızca özel bir kumandayla kapatılabiliyor.<br><br><b>İpucu 1:</b> Kumandanın üç kopyası var: sahibi Mesut'ta, eşi Hülya'da ve alarm şirketi çalışanı Koray'da.<br><br><b>İpucu 2:</b> Mesut o gece başka şehirdeydi. Hülya hastanede nöbetçiydi, kayıtları var. Koray'ın o gece bir işi yoktu ama kumandası da kayıp değildi.",
     "suspects": [
       {
-        "text": "A. Koray (alarm şirketi çalışanı)",
+        "text": "A. Mesut (kuyumcu)",
+        "correct": false
+      },
+      {
+        "text": "B. Hülya (kuyumcunun eşi)",
+        "correct": false
+      },
+      {
+        "text": "C. Koray (alarm şirketi çalışanı)",
         "correct": true
-      },
-      {
-        "text": "B. Mesut (kuyumcu)",
-        "correct": false
-      },
-      {
-        "text": "C. Hülya (kuyumcunun eşi)",
-        "correct": false
       }
     ],
     "cozum": "Alarmı kapatabilecek üç kişiden Mesut başka şehirdeydi, Hülya hastanedeydi. Geriye Koray kaldı."

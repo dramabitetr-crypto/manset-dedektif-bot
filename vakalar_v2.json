@@ -56,19 +56,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Cem",
-        "rol": "evde kalan yeğen"
-      },
-      {
         "ad": "Ferit",
         "rol": "komşu"
       },
       {
         "ad": "Nermin",
         "rol": "hizmetçi"
+      },
+      {
+        "ad": "Cem",
+        "rol": "evde kalan yeğen"
       }
     ],
-    "dogru": 0,
+    "dogru": 2,
     "cozum": "İzler yalnızca dışarı çıkıyordu, yani hırsız zaten evdeydi. Kırk iki numara ayak Nermin'e uymuyordu. Hırsız yeğen Cem'di."
   },
   {
@@ -104,19 +104,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Sevgi",
-        "rol": "öğretmen"
-      },
-      {
         "ad": "Kadir",
         "rol": "bekçi"
+      },
+      {
+        "ad": "Sevgi",
+        "rol": "öğretmen"
       },
       {
         "ad": "Orhan",
         "rol": "müdür yardımcısı"
       }
     ],
-    "dogru": 1,
+    "dogru": 0,
     "cozum": "Pazar günü okulda yalnızca bekçi Kadir vardı ve yedek anahtar onda. Sevgi ile Orhan şehir dışındaydı."
   },
   {
@@ -128,19 +128,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Pınar",
-        "rol": "kasiyer"
-      },
-      {
         "ad": "Taner",
         "rol": "tamirci"
       },
       {
         "ad": "Oya",
         "rol": "komşu"
+      },
+      {
+        "ad": "Pınar",
+        "rol": "kasiyer"
       }
     ],
-    "dogru": 0,
+    "dogru": 2,
     "cozum": "Vuruş izi solak birine aitti. Çay içerken yalnızca Pınar bardağı sol eliyle tuttu."
   },
   {
@@ -200,19 +200,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Cemal",
-        "rol": "komşu"
-      },
-      {
         "ad": "Ayşe",
         "rol": "komşu"
       },
       {
         "ad": "Nihat",
         "rol": "komşu"
+      },
+      {
+        "ad": "Cemal",
+        "rol": "komşu"
       }
     ],
-    "dogru": 0,
+    "dogru": 2,
     "cozum": "Paketin içindekini yalnızca hırsız bilebilirdi. Cemal, mavi cep saatini ağzından kaçırdı."
   },
   {
@@ -272,19 +272,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Fikret",
-        "rol": "terzi"
-      },
-      {
         "ad": "Sevil",
         "rol": "kuaför çırağı"
       },
       {
         "ad": "Hasan",
         "rol": "çaycı"
+      },
+      {
+        "ad": "Fikret",
+        "rol": "terzi"
       }
     ],
-    "dogru": 0,
+    "dogru": 2,
     "cozum": "Kapı kolundaki lavanta kokusu, her gün lavanta kolonyası süren terzi Fikret'e aitti."
   },
   {
@@ -320,19 +320,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Tolga",
-        "rol": "muhasebeci"
-      },
-      {
         "ad": "Nur",
         "rol": "sekreter"
+      },
+      {
+        "ad": "Tolga",
+        "rol": "muhasebeci"
       },
       {
         "ad": "Alper",
         "rol": "müdür"
       }
     ],
-    "dogru": 1,
+    "dogru": 0,
     "cozum": "Çekmeceyi yalnızca Nur'un anahtarı açmıştı ve Nur o gece ofisteydi. Alper yurt dışındaydı, Tolga'da anahtar yoktu."
   },
   {
@@ -344,19 +344,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Salih",
-        "rol": "bekçi"
-      },
-      {
         "ad": "Mine",
         "rol": "aşçı"
       },
       {
         "ad": "Yusuf",
         "rol": "seyis"
+      },
+      {
+        "ad": "Salih",
+        "rol": "bekçi"
       }
     ],
-    "dogru": 0,
+    "dogru": 2,
     "cozum": "Açık alanda bütün gece yağmur altında nöbet tutan biri ıslanırdı. Salih'in kupkuru çıkması, orada olmadığını gösteriyor."
   },
   {
@@ -368,19 +368,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Burcu",
-        "rol": "kiracı"
-      },
-      {
         "ad": "Kemal",
         "rol": "emekli"
+      },
+      {
+        "ad": "Burcu",
+        "rol": "kiracı"
       },
       {
         "ad": "Tuna",
         "rol": "kurye"
       }
     ],
-    "dogru": 0,
+    "dogru": 1,
     "cozum": "Asansör gece bozuktu. Burcu'nun asansöre bindiği yalandı. Tuna ise onarımdan sonra gelmişti."
   },
   {
@@ -392,11 +392,11 @@
     ],
     "supheliler": [
       {
-        "ad": "Tarkan",
+        "ad": "Cem",
         "rol": "öğrenci"
       },
       {
-        "ad": "Cem",
+        "ad": "Tarkan",
         "rol": "öğrenci"
       },
       {
@@ -404,7 +404,7 @@
         "rol": "öğrenci"
       }
     ],
-    "dogru": 1,
+    "dogru": 0,
     "cozum": "Cem kırdıysa yalnızca Tarkan doğru söylemiş olur. Tarkan ya da Deniz kırmış olsaydı iki kişi doğru söylerdi. Camı Cem kırdı."
   },
   {
@@ -420,15 +420,15 @@
         "rol": "çırak"
       },
       {
-        "ad": "Orhan",
-        "rol": "depocu"
-      },
-      {
         "ad": "Sevim",
         "rol": "kasiyer"
+      },
+      {
+        "ad": "Orhan",
+        "rol": "depocu"
       }
     ],
-    "dogru": 1,
+    "dogru": 2,
     "cozum": "Rafa sandalyesiz ancak çok uzun biri uzanabilirdi. Boyu bir doksan sekiz olan Orhan'dı."
   },
   {
@@ -440,19 +440,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Taylan",
-        "rol": "eski kiracı"
-      },
-      {
         "ad": "Nezih",
         "rol": "ev sahibi"
+      },
+      {
+        "ad": "Taylan",
+        "rol": "eski kiracı"
       },
       {
         "ad": "Ceren",
         "rol": "ev sahibinin kızı"
       }
     ],
-    "dogru": 0,
+    "dogru": 1,
     "cozum": "Kilitler anahtarla açılmıştı. Nezih hastanedeydi, Ceren yurt dışındaydı. Geriye anahtarı hâlâ elinde tutan eski kiracı Taylan kaldı."
   },
   {
@@ -464,19 +464,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Selçuk",
-        "rol": "dağıtımcı"
-      },
-      {
         "ad": "Tayfun",
         "rol": "komşu"
+      },
+      {
+        "ad": "Selçuk",
+        "rol": "dağıtımcı"
       },
       {
         "ad": "Ramazan",
         "rol": "simitçi"
       }
     ],
-    "dogru": 1,
+    "dogru": 0,
     "cozum": "Kamerada kırmızı bere takan biri vardı. Mahallede kırmızı bere takan tek kişi Tayfun'du."
   },
   {
@@ -492,15 +492,15 @@
         "rol": "komşu"
       },
       {
-        "ad": "Oğuz",
-        "rol": "komşu"
-      },
-      {
         "ad": "Hakan",
         "rol": "hemşire"
+      },
+      {
+        "ad": "Oğuz",
+        "rol": "komşu"
       }
     ],
-    "dogru": 1,
+    "dogru": 2,
     "cozum": "Sinema on bir buçukta kapanmıştı, Oğuz'un alibisi yalandı. Duygu telefon kaydıyla, Hakan nöbetle aklandı."
   },
   {
@@ -512,19 +512,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Ümit",
-        "rol": "güvenlik şefi"
-      },
-      {
         "ad": "Selçuk",
         "rol": "müdür"
+      },
+      {
+        "ad": "Ümit",
+        "rol": "güvenlik şefi"
       },
       {
         "ad": "Kader",
         "rol": "temizlikçi"
       }
     ],
-    "dogru": 0,
+    "dogru": 1,
     "cozum": "Şifre ilk denemede doğru girilmişti. Selçuk hep yanlış girerdi, Kader şifreyi bilmezdi. Kayıtları Ümit sildi."
   },
   {
@@ -536,19 +536,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Rıza",
-        "rol": "çiftçi"
-      },
-      {
         "ad": "Berk",
         "rol": "komşu"
+      },
+      {
+        "ad": "Rıza",
+        "rol": "çiftçi"
       },
       {
         "ad": "Cüneyt",
         "rol": "postacı"
       }
     ],
-    "dogru": 1,
+    "dogru": 0,
     "cozum": "İz arazi motosikletine aitti. Arazi motosikleti yalnızca komşu Berk'te vardı."
   },
   {
@@ -560,19 +560,19 @@
     ],
     "supheliler": [
       {
-        "ad": "Koray",
-        "rol": "alarm şirketi çalışanı"
-      },
-      {
         "ad": "Mesut",
         "rol": "kuyumcu"
       },
       {
         "ad": "Hülya",
         "rol": "kuyumcunun eşi"
+      },
+      {
+        "ad": "Koray",
+        "rol": "alarm şirketi çalışanı"
       }
     ],
-    "dogru": 0,
+    "dogru": 2,
     "cozum": "Alarmı kapatabilecek üç kişiden Mesut başka şehirdeydi, Hülya hastanedeydi. Geriye Koray kaldı."
   }
 ]
